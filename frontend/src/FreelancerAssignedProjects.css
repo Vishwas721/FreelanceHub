@@ -1,0 +1,242 @@
+/* --- General Page Layout & Typography --- */
+.assigned-projects-container {
+    padding: 40px 20px;
+    background-color: #F8F9FA;
+    min-height: calc(100vh - 60px);
+    color: #333;
+    font-family: 'Inter', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.page-title {
+    font-size: 2.8em;
+    font-weight: 700;
+    color: #2C3E50; /* Darker, sophisticated grey */
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.page-subtitle {
+    font-size: 1.1em;
+    color: #6C757D;
+    text-align: center;
+    margin-bottom: 40px;
+    max-width: 600px;
+}
+
+.no-projects-message {
+    text-align: center;
+    font-size: 1.2em;
+    color: #555;
+    margin-top: 60px;
+    padding: 20px;
+    background-color: #E9ECEF;
+    border-radius: 12px; /* More rounded */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* Softer shadow */
+}
+
+/* --- Project List & Card Styling --- */
+.projects-list {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    width: 100%;
+    max-width: 750px;
+}
+
+.project-card {
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1); /* Stronger shadow */
+    padding: 25px 30px;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    border: none; /* Remove subtle border */
+}
+
+.project-card:hover {
+    transform: translateY(-8px); /* More pronounced lift */
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15); /* Stronger hover shadow */
+}
+
+/* --- Card Header (Title & Status Badge) --- */
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px; /* More space */
+}
+
+.project-title {
+    font-size: 1.9em; /* Slightly larger */
+    font-weight: 600;
+    color: #007BFF;
+    margin: 0;
+}
+
+/* Status Badges */
+.status-badge {
+    padding: 8px 16px; /* Larger padding */
+    border-radius: 25px;
+    font-size: 0.9em; /* Slightly larger */
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: white;
+    white-space: nowrap;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Subtle badge shadow */
+}
+
+.status-badge.accepted,
+.status-badge.completed {
+    background-color: #28A745;
+}
+
+.status-badge.in-progress {
+    background-color: #007BFF; /* Use primary blue */
+}
+
+.status-badge.pending-review {
+    background-color: #6F42C1;
+}
+
+/* --- Card Details --- */
+.card-details {
+    margin-bottom: 30px; /* More space */
+    line-height: 1.7; /* Increased line height */
+}
+
+.card-details p {
+    margin-bottom: 12px; /* More space */
+    font-size: 1.05em; /* Slightly larger */
+    color: #495057;
+}
+
+.card-details p:last-child {
+    margin-bottom: 0;
+}
+
+.bid-amount span,
+.deadline-date span,
+.client-info span {
+    font-weight: 600;
+    color: #343A40;
+}
+
+.project-description {
+    font-size: 1em; /* Slightly larger */
+    color: #6C757D;
+    margin-top: 15px; /* More space */
+    margin-bottom: 20px; /* More space */
+}
+
+/* --- Card Actions (Buttons) --- */
+.card-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    padding-top: 25px; /* More space */
+    border-top: 2px solid #E9ECEF; /* Thicker separator */
+}
+
+.view-project-button,
+.mark-for-review-button {
+    padding: 12px 22px; /* Larger buttons */
+    border: none;
+    border-radius: 10px; /* More rounded */
+    font-size: 1em; /* Slightly larger */
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease, box-shadow 0.1s ease; /* Added shadow */
+    flex-shrink: 0;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Subtle button shadow */
+}
+
+.view-project-button {
+    background-color: #6C757D;
+    color: white;
+}
+
+.view-project-button:hover {
+    background-color: #5A6268;
+    transform: translateY(-3px); /* More pronounced lift */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Stronger hover shadow */
+}
+
+.mark-for-review-button {
+    background-color: #007BFF;
+    color: white;
+}
+
+.mark-for-review-button:hover {
+    background-color: #0056B3;
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Stronger hover shadow */
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 768px) {
+    .assigned-projects-container {
+        padding: 30px 15px;
+    }
+
+    .page-title {
+        font-size: 2.4em;
+    }
+
+    .page-subtitle {
+        font-size: 1em;
+        margin-bottom: 30px;
+    }
+
+    .project-card {
+        padding: 20px 25px;
+    }
+
+    .project-title {
+        font-size: 1.7em; /* Adjusted font size */
+    }
+
+    .card-actions {
+        flex-direction: column;
+        gap: 10px;
+        padding-top: 20px; /* Adjusted padding */
+    }
+
+    .view-project-button,
+    .mark-for-review-button {
+        width: 100%;
+        padding: 12px 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .assigned-projects-container {
+        padding: 20px 10px;
+    }
+
+    .page-title {
+        font-size: 2em;
+    }
+
+    .page-subtitle {
+        font-size: 0.9em;
+        margin-bottom: 20px;
+    }
+
+    .project-card {
+        padding: 18px 20px;
+    }
+
+    .project-title {
+        font-size: 1.5em; /* Further adjusted font size */
+    }
+
+    .status-badge {
+        padding: 6px 10px;
+        font-size: 0.8em;
+    }
+}

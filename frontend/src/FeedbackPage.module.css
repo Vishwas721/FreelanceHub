@@ -1,0 +1,185 @@
+/* src/pages/FeedbackPage.module.css */
+
+.pageContainer {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #f8f9fa; /* Light background */
+    color: #333;
+    font-family: 'Inter', sans-serif; /* Modern sans-serif font */
+}
+
+.mainContent {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+}
+
+.feedbackCard {
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); /* Soft shadow */
+    padding: 40px;
+    max-width: 600px;
+    width: 100%;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feedbackCard:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+    font-size: 2.2em;
+    color: #2c3e50;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.subtitle {
+    font-size: 1.1em;
+    color: #666;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.feedbackForm {
+    text-align: left;
+}
+
+.formGroup {
+    margin-bottom: 25px;
+}
+
+.formLabel {
+    display: block;
+    font-size: 0.95em;
+    color: #555;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.formInput {
+    width: 100%;
+    padding: 14px 18px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 1em;
+    color: #333;
+    background-color: #fdfdfd;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.formInput:focus {
+    outline: none;
+    border-color: #007bff; /* Primary brand color */
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.15);
+}
+
+.textarea {
+    resize: vertical; /* Allow vertical resizing */
+    min-height: 100px;
+}
+
+.starRating {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    margin-top: 10px;
+}
+
+.star {
+    font-size: 2.2em;
+    color: #e0e0e0; /* Grey for unselected stars */
+    cursor: pointer;
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.star.filled {
+    color: #ffc107; /* Gold for filled stars */
+}
+
+.star:hover {
+    transform: scale(1.1);
+}
+.star:hover:not(.filled) {
+    color: #ffda6a; /* Lighter gold on hover for unselected */
+}
+
+
+.submitButton {
+    background-color: #007bff; /* Primary brand color */
+    color: #ffffff;
+    padding: 15px 25px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.submitButton:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 123, 255, 0.2);
+}
+
+.submitButton:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.successMessage {
+    color: #28a745; /* Green for success */
+    margin-top: 20px;
+    font-size: 1.1em;
+    font-weight: 500;
+}
+
+.errorMessage {
+    color: #dc3545; /* Red for error */
+    margin-top: 20px;
+    font-size: 1.1em;
+    font-weight: 500;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .feedbackCard {
+        padding: 30px;
+    }
+
+    .title {
+        font-size: 1.8em;
+    }
+
+    .subtitle {
+        font-size: 1em;
+    }
+
+    .formInput,
+    .submitButton {
+        padding: 12px 15px;
+        font-size: 1em;
+    }
+}
+
+@media (max-width: 480px) {
+    .feedbackCard {
+        padding: 20px;
+        margin: 0 10px; /* Add some margin on very small screens */
+    }
+
+    .title {
+        font-size: 1.6em;
+    }
+}

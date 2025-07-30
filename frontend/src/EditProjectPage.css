@@ -1,0 +1,428 @@
+/* src/pages/EditProjectPage.css - Ultra-Modern Upgrade */
+
+/* Define a set of consistent colors for light mode */
+:root {
+    --color-page-background: #F0F2F5; /* A very light, cool grey for the overall page */
+    --color-container-background: #FFFFFF; /* White for main content cards */
+    --color-text-primary: #2C3E50; /* Deep blue-grey for main text */
+    --color-text-secondary: #7F8C8D; /* Muted grey for secondary text */
+    --color-accent-primary: #3498DB; /* Bright Blue */
+    --color-accent-secondary: #2ECC71; /* Emerald Green */
+    --color-card-border: #E0E6EB; /* Subtle border for cards */
+    --color-shadow-light: rgba(0, 0, 0, 0.08); /* Light shadow for depth */
+    --color-shadow-medium: rgba(0, 0, 0, 0.05); /* Medium shadow for more depth */
+    --color-shadow-strong: rgba(0, 0, 0, 0.12); /* Stronger shadow on hover/active */
+    --color-button-primary: #3498DB; /* Primary button blue */
+    --color-button-primary-hover: #217DBB; /* Darker blue on hover */
+    --color-button-secondary: #BDC3C7; /* Light grey for secondary button */
+    --color-button-secondary-hover: #95A5A6; /* Darker grey on hover */
+    --color-input-border: #D1D5DB; /* Input border grey */
+    --color-input-focus: #3498DB; /* Input focus blue */
+    --color-input-shadow: rgba(52, 152, 219, 0.25); /* Input focus shadow */
+
+    /* Alert/Message Colors */
+    --color-alert-success-bg: #D4EDDA;
+    --color-alert-success-text: #155724;
+    --color-alert-success-border: #C3E6CB;
+
+    --color-alert-error-bg: #F8D7DA;
+    --color-alert-error-text: #721C24;
+    --color-alert-error-border: #F5C6CB;
+
+    --color-alert-warning-bg: #FFF3CD;
+    --color-alert-warning-text: #664D03;
+    --color-alert-warning-border: #FFEEBA;
+}
+
+/* --- Global Base Styles for this page --- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+.page-container {
+    min-height: 100vh;
+    background-color: var(--color-page-background); /* Use CSS variable */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Inter', sans-serif;
+    color: var(--color-text-primary);
+}
+
+/* --- Loading & Error States --- */
+.loading-page-container, .error-page-container {
+    min-height: 100vh;
+    background-color: var(--color-page-background); /* Consistent background */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem; /* More padding */
+    font-family: 'Inter', sans-serif;
+    color: var(--color-text-primary);
+}
+
+.loading-text {
+    color: var(--color-text-secondary);
+    font-size: 1.25rem; /* Larger text */
+    font-weight: 500;
+    margin-top: 1.5rem; /* Space from spinner */
+}
+
+/* Custom Spinner */
+.spinner {
+    border: 6px solid var(--color-accent-primary); /* Primary accent color */
+    border-top: 6px solid var(--color-accent-secondary); /* Secondary accent color for top */
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Alert styles */
+.alert-error, .alert-warning, .alert-success {
+    padding: 1rem 1.5rem; /* More padding */
+    border-radius: 10px; /* More rounded */
+    margin-bottom: 2rem; /* More space below */
+    text-align: center;
+    font-weight: 600; /* Bolder text */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Softer, more pronounced shadow */
+    width: 100%;
+    max-width: 600px; /* Wider alerts */
+    border-width: 1px; /* Explicit border */
+    border-style: solid;
+}
+
+.alert-error {
+    background-color: var(--color-alert-error-bg);
+    border-color: var(--color-alert-error-border);
+    color: var(--color-alert-error-text);
+}
+
+.alert-warning {
+    background-color: var(--color-alert-warning-bg);
+    border-color: var(--color-alert-warning-border);
+    color: var(--color-alert-warning-text);
+}
+
+.alert-success {
+    background-color: var(--color-alert-success-bg);
+    border-color: var(--color-alert-success-border);
+    color: var(--color-alert-success-text);
+}
+
+/* --- Main Content Area --- */
+.edit-project-main {
+    flex-grow: 1;
+    width: 100%;
+    max-width: 1000px; /* Wider content area */
+    margin: 4rem auto; /* Top margin for spacing below header */
+    padding: 2.5rem; /* More generous padding for the main section */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    background-color: var(--color-container-background); /* Main card background */
+    border-radius: 20px; /* Very rounded corners for the main container */
+    box-shadow:
+        0 15px 40px var(--color-shadow-light), /* Layered shadows for depth */
+        0 25px 70px var(--color-shadow-medium);
+    border: 1px solid var(--color-card-border); /* Subtle border */
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); /* Smooth transition */
+}
+
+.edit-project-main:hover {
+    transform: translateY(-5px); /* Gentle lift on hover */
+    box-shadow:
+        0 20px 50px var(--color-shadow-light),
+        0 30px 80px var(--color-shadow-strong);
+}
+
+.edit-project-card {
+    /* This class is now essentially the content wrapper inside edit-project-main */
+    background-color: transparent; /* No background, it's handled by parent */
+    border-radius: 0; /* No border-radius, handled by parent */
+    box-shadow: none; /* No shadow, handled by parent */
+    padding: 0; /* No padding, handled by parent */
+    width: 100%;
+    max-width: 800px; /* Limit content width within the main section */
+    border: none; /* No border */
+    transition: none; /* No transition here */
+}
+
+.edit-project-title {
+    font-size: 3.2em; /* Larger, more impactful title */
+    font-weight: 800; /* Extra bold */
+    color: var(--color-text-primary); /* Deep text color */
+    margin-bottom: 2.5rem; /* More space below */
+    text-align: center;
+    line-height: 1.2;
+    position: relative;
+    padding-bottom: 1rem; /* Space for the underline */
+}
+
+.edit-project-title::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0;
+    width: 180px; /* Longer underline */
+    height: 5px; /* Thicker underline */
+    background: linear-gradient(90deg, var(--color-accent-primary) 0%, var(--color-accent-secondary) 100%); /* Gradient underline */
+    border-radius: 3px;
+}
+
+.project-title-highlight {
+    color: var(--color-accent-primary); /* Highlight color */
+}
+
+/* --- Form Styles --- */
+.edit-project-form {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem; /* More space between form groups */
+}
+
+.form-group {
+    margin-bottom: 0; /* Gap handles spacing */
+}
+
+.form-label {
+    display: block;
+    color: var(--color-text-primary);
+    font-size: 1.1rem; /* Slightly larger label */
+    font-weight: 600;
+    margin-bottom: 0.75rem; /* More space below label */
+}
+
+.form-input, .form-select, .form-textarea {
+    width: 100%;
+    padding: 1rem; /* More padding for inputs */
+    border: 1px solid var(--color-input-border);
+    border-radius: 10px; /* More rounded inputs */
+    transition: all 0.3s ease;
+    color: var(--color-text-primary);
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.06); /* Subtle inner shadow */
+    background-color: var(--color-page-background); /* Slightly off-white input background */
+}
+
+.form-input:focus, .form-select:focus, .form-textarea:focus {
+    outline: none;
+    border-color: var(--color-input-focus);
+    box-shadow: 0 0 0 4px var(--color-input-shadow), inset 0 1px 3px rgba(0, 0, 0, 0.06); /* Enhanced focus ring */
+    background-color: var(--color-container-background); /* White background on focus */
+}
+
+.form-textarea {
+    resize: vertical;
+    min-height: 12rem; /* Taller text area */
+}
+
+.form-select {
+    appearance: none; /* Remove default select arrow */
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236B7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 1rem center; /* Adjusted arrow position */
+    background-size: 1.2em 1.2em; /* Smaller arrow */
+    padding-right: 3rem; /* Space for arrow */
+}
+
+/* --- Form Actions --- */
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1.5rem; /* More space between buttons */
+    margin-top: 3rem; /* More space above buttons */
+}
+
+.button {
+    font-weight: 700; /* Bolder button text */
+    padding: 1rem 2.5rem; /* Larger buttons */
+    border-radius: 50px; /* Fully rounded */
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); /* Smooth, elegant transition */
+    cursor: pointer;
+    border: none;
+    display: inline-block;
+    text-align: center;
+    white-space: nowrap;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15); /* More pronounced shadow */
+}
+
+.button:hover {
+    transform: translateY(-4px); /* More pronounced lift */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2); /* Deeper shadow on hover */
+}
+
+.button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.primary-button {
+    background-color: var(--color-button-primary);
+    color: white;
+}
+.primary-button:hover {
+    background-color: var(--color-button-primary-hover);
+}
+
+.secondary-button {
+    background-color: var(--color-button-secondary);
+    color: var(--color-text-primary);
+}
+.secondary-button:hover {
+    background-color: var(--color-button-secondary-hover);
+}
+
+/* --- Scrollbar Styling (Modern Browsers) --- */
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--color-page-background); /* light blue for track */
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--color-accent-primary); /* blue for thumb */
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--color-button-primary-hover); /* darker blue on hover */
+}
+
+/* --- Text Selection Color --- */
+::selection {
+    background-color: var(--color-accent-primary); /* Accent color for selection */
+    color: white; /* White text on selection */
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 992px) {
+    .edit-project-main {
+        margin: 3rem auto;
+        padding: 2rem;
+        border-radius: 15px;
+    }
+    .edit-project-title {
+        font-size: 2.8em;
+        margin-bottom: 2rem;
+    }
+    .edit-project-title::after {
+        width: 150px;
+        height: 4px;
+    }
+    .form-group {
+        gap: 1.5rem;
+    }
+    .form-label {
+        font-size: 1em;
+    }
+    .form-input, .form-select, .form-textarea {
+        padding: 0.85rem;
+        border-radius: 8px;
+    }
+    .form-textarea {
+        min-height: 10rem;
+    }
+    .form-actions {
+        gap: 1rem;
+        margin-top: 2rem;
+    }
+    .button {
+        padding: 0.85rem 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .edit-project-main {
+        margin: 2rem auto;
+        padding: 1.5rem;
+        border-radius: 12px;
+    }
+    .edit-project-title {
+        font-size: 2.2em;
+        margin-bottom: 1.5rem;
+        padding-bottom: 0.75rem;
+    }
+    .edit-project-title::after {
+        width: 120px;
+        height: 3px;
+    }
+    .edit-project-card {
+        padding: 0; /* No padding inside the main card */
+    }
+    .form-group {
+        gap: 1rem;
+    }
+    .form-label {
+        font-size: 0.95em;
+    }
+    .form-input, .form-select, .form-textarea {
+        padding: 0.75rem;
+        border-radius: 6px;
+    }
+    .form-textarea {
+        min-height: 8rem;
+    }
+    .form-actions {
+        flex-direction: column; /* Stack buttons on small screens */
+        align-items: center;
+        gap: 0.75rem;
+        margin-top: 1.5rem;
+    }
+    .button {
+        width: 100%; /* Full width buttons when stacked */
+        padding: 0.75rem 1.5rem;
+        font-size: 0.9em;
+    }
+    .alert-error, .alert-warning, .alert-success {
+        padding: 0.75rem 1rem;
+        margin-bottom: 1.5rem;
+        font-size: 1em;
+    }
+    .loading-text {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .edit-project-main {
+        margin: 1.5rem auto;
+        padding: 1rem;
+    }
+    .edit-project-title {
+        font-size: 1.8em;
+        margin-bottom: 1rem;
+        padding-bottom: 0.5rem;
+    }
+    .edit-project-title::after {
+        width: 90px;
+        height: 2px;
+    }
+    .form-group {
+        gap: 0.75rem;
+    }
+    .form-label {
+        font-size: 0.9em;
+    }
+    .form-input, .form-select, .form-textarea {
+        padding: 0.6rem;
+        border-radius: 5px;
+    }
+    .form-textarea {
+        min-height: 6rem;
+    }
+    .button {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.85em;
+    }
+}

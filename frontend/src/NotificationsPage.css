@@ -1,0 +1,304 @@
+/* General Page Layout */
+.notifications-page {
+    padding: 60px 25px; /* More generous padding for a spacious feel */
+    background: linear-gradient(135deg, #F0F2F5 0%, #E6E9EE 100%); /* Soft gradient background */
+    min-height: calc(100vh - 60px); /* Adjust for header/footer */
+    font-family: 'Inter', sans-serif;
+    color: #2C3E50; /* Dark blue-grey for main text */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+/* Page Title & Subtitle */
+.notifications-header {
+    width: 100%;
+    max-width: 900px; /* Wider content area */
+    display: flex;
+    flex-direction: column; /* Stack title and buttons on top of each other */
+    align-items: flex-start; /* Align header content to the left */
+    margin-bottom: 40px;
+    padding-bottom: 25px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08); /* More subtle separator */
+    position: relative; /* For potential future elements */
+}
+
+.notifications-header h2 {
+    font-size: 3.2em; /* Larger, more impactful title */
+    font-weight: 800; /* Extra bold */
+    color: #1A202C; /* Very dark heading */
+    margin: 0;
+    line-height: 1.2;
+    text-align: left; /* Keep text aligned left */
+}
+
+.notifications-header .header-buttons {
+    display: flex;
+    gap: 15px; /* Space between buttons */
+    margin-top: 20px; /* Space from title */
+    flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
+    justify-content: flex-start; /* Align buttons to the left */
+}
+
+/* Buttons for Mark as Read */
+.mark-selected-read-button,
+.mark-all-read-button {
+    background-color: #007BFF; /* Primary blue */
+    color: white;
+    border: none;
+    padding: 14px 28px; /* Larger buttons */
+    border-radius: 10px; /* More rounded */
+    font-size: 1.05em; /* Slightly larger text */
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease; /* Smooth transition for all properties */
+    box-shadow: 0 6px 15px rgba(0, 123, 255, 0.25); /* Stronger, softer shadow */
+    letter-spacing: 0.5px; /* Slight letter spacing */
+    flex-shrink: 0; /* Prevent shrinking */
+}
+
+.mark-selected-read-button:hover,
+.mark-all-read-button:hover {
+    background-color: #0056B3; /* Darker blue on hover */
+    transform: translateY(-4px); /* More pronounced lift */
+    box-shadow: 0 10px 25px rgba(0, 123, 255, 0.4); /* Enhanced shadow on hover */
+}
+
+.mark-selected-read-button:active,
+.mark-all-read-button:active {
+    transform: translateY(0); /* Press down effect */
+    box-shadow: 0 3px 8px rgba(0, 123, 255, 0.2);
+}
+
+/* No Notifications Message */
+.no-notifications {
+    text-align: center;
+    font-size: 1.3em;
+    color: #6C757D;
+    padding: 60px 30px; /* More padding */
+    background-color: #FFFFFF;
+    border-radius: 15px; /* More rounded */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08); /* Prominent shadow */
+    margin-top: 30px; /* Space from header */
+    max-width: 600px;
+    width: 100%;
+    line-height: 1.6;
+    animation: fadeIn 0.8s ease-out; /* Fade in animation */
+}
+
+/* Notifications List */
+.notifications-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    max-width: 900px; /* Matches header width */
+}
+
+/* Individual Notification Item */
+.notification-item {
+    display: flex; /* Keep it as flex-row */
+    align-items: flex-start; /* Align checkbox to the top of content */
+    background-color: #FFFFFF;
+    border-radius: 15px; /* Consistent rounded corners */
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.07); /* Soft, noticeable shadow */
+    padding: 25px 30px; /* Ample padding */
+    margin-bottom: 20px; /* Space between items */
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.3s ease;
+    position: relative;
+    overflow: hidden; /* Ensures border-radius crops content */
+    cursor: pointer; /* Indicates clickability */
+}
+
+.notification-item:hover {
+    transform: translateY(-5px); /* Gentle lift on hover */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12); /* Stronger shadow on hover */
+}
+
+.notification-item.unread {
+    border-left: 6px solid #FF5722; /* Vibrant orange-red indicator for unread */
+    background-color: #FFF3E0; /* Very subtle warm tint for unread */
+    font-weight: 600; /* Make unread text a bit bolder */
+    animation: pulseBorder 1.5s infinite ease-out; /* Subtle pulsing effect */
+}
+
+@keyframes pulseBorder {
+    0% { border-left-color: #FF5722; }
+    50% { border-left-color: #FF9800; } /* Lighter orange in middle */
+    100% { border-left-color: #FF5722; }
+}
+
+.notification-item.unread .notification-message {
+    color: #333; /* Keep unread message text clear */
+}
+
+/* Custom Checkbox Styling */
+.notification-checkbox {
+    /* Hide default checkbox */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    /* Custom styling */
+    width: 24px; /* Larger checkbox */
+    height: 24px;
+    border: 2px solid #B0BEC5; /* Light grey border */
+    border-radius: 6px; /* Slightly rounded square */
+    background-color: #F0F2F5;
+    cursor: pointer;
+    position: relative;
+    margin-right: 20px; /* Space from content */
+    flex-shrink: 0;
+    transition: all 0.2s ease;
+    margin-top: 2px; /* Small adjustment to align with text */
+}
+
+.notification-checkbox:checked {
+    background-color: #007BFF; /* Primary blue when checked */
+    border-color: #007BFF;
+    box-shadow: 0 2px 8px rgba(0, 123, 255, 0.3); /* Subtle shadow when checked */
+}
+
+.notification-checkbox:checked::after {
+    content: '✔'; /* Checkmark symbol */
+    font-size: 16px;
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: 700;
+}
+
+.notification-checkbox:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.3); /* Focus ring */
+}
+
+
+/* Notification Content */
+.notification-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Space out message and timestamp */
+}
+
+.notification-message {
+    font-size: 1.15em; /* Larger, more readable message */
+    color: #34495E; /* Darker text for primary message */
+    line-height: 1.6;
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+.notification-timestamp {
+    font-size: 0.9em;
+    color: #95A5A6; /* Muted grey for timestamp */
+    text-align: right; /* Align timestamp to the right within its flex item */
+    margin-top: auto; /* Push to bottom if content is dynamic */
+}
+
+/* Error Message */
+.error-message {
+    text-align: center;
+    color: #D32F2F; /* Deep red for errors */
+    font-weight: 600;
+    padding: 40px;
+    background-color: #FFEBEE; /* Light red background */
+    border: 1px solid #EF9A9A;
+    border-radius: 12px;
+    margin-top: 50px;
+    max-width: 700px;
+    width: 100%;
+    box-shadow: 0 5px 15px rgba(211, 47, 47, 0.1);
+    animation: shake 0.5s ease-in-out; /* Subtle shake for errors */
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+    20%, 40%, 60%, 80% { transform: translateX(5px); }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+    .notifications-page {
+        padding: 40px 20px;
+    }
+    .notifications-header h2 {
+        font-size: 2.8em;
+    }
+}
+
+/* Key Change: Keep flex-direction: row for notification-item */
+@media (max-width: 768px) {
+    .notifications-page {
+        padding: 30px 15px;
+    }
+    .notifications-header {
+        align-items: center; /* Center header content */
+        text-align: center;
+    }
+    .notifications-header h2 {
+        font-size: 2.4em;
+        text-align: center;
+        margin-bottom: 15px;
+    }
+    .notifications-header .header-buttons {
+        justify-content: center; /* Center buttons */
+        margin-top: 15px;
+    }
+    .mark-selected-read-button,
+    .mark-all-read-button {
+        width: 100%; /* Full width buttons */
+        margin: 5px 0; /* Adjust margins for stacking */
+    }
+    .notification-item {
+        /* On small screens, keep it as row, allow text to wrap */
+        flex-direction: row; /* KEEP AS ROW */
+        align-items: flex-start; /* Align checkbox to the top of text */
+        padding: 20px;
+    }
+    .notification-checkbox {
+        /* No change here, margin-right handles spacing */
+        margin-right: 15px; /* Ensure space between checkbox and text */
+        margin-top: 2px; /* Small adjustment for better vertical alignment with text */
+    }
+    .notification-content {
+        /* This will naturally wrap the text */
+        flex-grow: 1;
+    }
+    .notification-timestamp {
+        align-self: flex-end; /* Still push to right within content */
+        margin-top: 10px; /* Ensure space from message above */
+    }
+}
+
+@media (max-width: 480px) {
+    .notifications-page {
+        padding: 20px 10px;
+    }
+    .notifications-header h2 {
+        font-size: 2em;
+    }
+    .mark-selected-read-button,
+    .mark-all-read-button {
+        font-size: 0.95em;
+        padding: 10px 20px;
+    }
+    .notification-item {
+        padding: 15px;
+    }
+    .notification-message {
+        font-size: 1em;
+    }
+    .notification-timestamp {
+        font-size: 0.8em;
+    }
+}

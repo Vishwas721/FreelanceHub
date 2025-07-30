@@ -1,0 +1,213 @@
+/* src/components/HeroSection/HeroSection.css */
+
+/* Define CSS Variables for better maintainability (add these to your root or App.css if not already there) */
+/* Example:
+:root {
+  --primary-color: #007bff;     // A vibrant blue for actions
+  --secondary-color: #6c757d;   // A soft gray for secondary elements
+  --accent-color: #28a745;      // A green for highlights/success
+  --text-light: #ffffff;      // White text for dark backgrounds
+  --text-dark: #343a40;        // Dark text for light backgrounds
+}
+*/
+
+.hero-section {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--text-light, #f0f0f0); /* Default to light text */
+    overflow: hidden;
+    padding: 0 !important; /* IMPORTANT: Ensures no conflicting padding causes horizontal scroll */
+    /* Fallback background for video */
+}
+
+/* Specific styles for the video-based hero section */
+
+/* 🔹 Background video */
+.hero-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures video covers the entire section */
+    z-index: -2; /* Puts video behind overlay and content */
+    /* Add border-radius for the curve */
+    border-bottom-left-radius: 60px; /* Adjust value for desired curve */
+    border-bottom-right-radius: 60px; /* Adjust value for desired curve */
+    /* If you want all corners curved, use: border-radius: 60px; */
+}
+
+/* 🔹 Overlay to enhance text readability over the video */
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Subtle dark overlay to ensure text is readable over varying video content */
+    background-color: rgba(0, 0, 0, 0.4); /* Adjust opacity as needed */
+    z-index: -1; /* Puts overlay behind content but above video */
+    /* Match border-radius of the video */
+    border-bottom-left-radius: 60px; /* Adjust value to match video */
+    border-bottom-right-radius: 60px; /* Adjust value to match video */
+    /* If you want all corners curved, use: border-radius: 60px; */
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1; /* Ensures content is on top */
+    max-width: 900px;
+    padding: 0 1.5rem; /* Add some horizontal padding for smaller screens */
+    animation-duration: 1s; /* From animate.css */
+    animation-fill-mode: both;
+}
+
+/* src/components/HeroSection/HeroSection.css */
+
+.hero-title {
+    /* ... (other existing properties) ... */
+
+    /* UPDATED GRADIENT COLORS HERE: Almost Pure White with a Hint of Coolness */
+    background: -webkit-linear-gradient(45deg, #FFFFFF, #F0F5F8); /* Pure white to a very light blue-grey */
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent; /* Fallback for browsers not supporting text-fill-color */
+    text-shadow: 0 4px 20px rgba(255, 255, 255, 0.8); /* Adjusted shadow for white text */
+}
+.hero-subtitle {
+    font-size: 1.6rem;
+    margin-bottom: 3rem;
+    opacity: 0.98; /* Almost fully opaque for readability */
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5); /* Clearer shadow */
+    font-weight: 300;
+    color: var(--text-light, #f0f0f0); /* Ensures subtitle is light colored */
+}
+
+/* 🔹 Search form container */
+.search-container {
+    background: rgba(255, 255, 255, 0.98); /* Almost opaque white */
+    border-radius: 60px; /* Highly rounded */
+    padding: 12px 25px; /* Slightly more padding */
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2); /* Soft shadow */
+    display: flex;
+    align-items: center;
+    max-width: 700px;
+    margin: 0 auto;
+    border: 2px solid var(--primary-color, #007bff); /* Border color using primary variable */
+    transition: all 0.3s ease;
+}
+
+.search-container:focus-within {
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3); /* Enhanced shadow on focus */
+    transform: translateY(-3px);
+}
+
+.hero-search-form {
+    width: 100%;
+    display: flex; /* Ensures input and button are side-by-side */
+    align-items: center;
+}
+
+.hero-search-input {
+    border: none;
+    background: transparent;
+    box-shadow: none;
+    padding: 12px 25px;
+    height: 60px;
+    font-size: 1.2rem;
+    color: var(--text-dark, #343a40); /* Dark text for the input */
+    flex-grow: 1; /* Allows input to take available space */
+    outline: none; /* Remove default focus outline */
+}
+
+.hero-search-input::placeholder {
+    color: #a0a0a0;
+    font-style: italic;
+}
+
+.btn-search-hero {
+    background-color: var(--primary-color, #007bff); /* Primary color for button */
+    color: var(--text-light, #ffffff);
+    border: none;
+    border-radius: 50px; /* Highly rounded button */
+    padding: 12px 35px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-search-hero:hover {
+    background-color: var(--secondary-color, #6c757d); /* Secondary color on hover */
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 123, 255, 0.3); /* Soft blue shadow */
+}
+
+/* 🔹 Responsive styles */
+@media (max-width: 992px) {
+    .hero-title {
+        font-size: 4rem;
+    }
+    .hero-subtitle {
+        font-size: 1.5rem;
+    }
+    /* Remove curve for smaller screens if it doesn't look good */
+    .hero-video, .hero-overlay {
+        border-radius: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 3.5rem;
+    }
+    .hero-subtitle {
+        font-size: 1.3rem;
+    }
+    .hero-search-input {
+        height: 50px;
+        font-size: 1.1rem;
+        padding: 10px 20px;
+    }
+    .btn-search-hero {
+        padding: 10px 25px;
+        font-size: 1.1rem;
+    }
+    .search-container {
+        padding: 8px 15px;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero-title {
+        font-size: 2.8rem;
+    }
+    .hero-subtitle {
+        font-size: 1.1rem;
+        margin-bottom: 2rem; /* Reduce margin for small screens */
+    }
+    .hero-search-form {
+        flex-direction: column; /* Stack input and button on small screens */
+        gap: 10px; /* Space between stacked elements */
+    }
+    .hero-search-input {
+        width: 100%;
+        border-radius: 50px; /* Keep input rounded when stacked */
+    }
+    .btn-search-hero {
+        width: 100%;
+        border-radius: 50px; /* Keep button rounded when stacked */
+    }
+    .search-container {
+        padding: 10px; /* Adjust padding for very small screens */
+        max-width: 90%; /* Allow container to shrink more */
+    }
+}

@@ -1,0 +1,88 @@
+/* src/components/Footer/Footer.css */
+
+.footer-section {
+    background-color: var(--secondary-color) !important; /* Dark charcoal/navy */
+    color: var(--text-light) !important; /* Light text color */
+    padding-top: 5rem;
+    padding-bottom: 3rem; /* Slightly less at bottom */
+}
+
+.footer-brand {
+    font-size: 2.2rem; /* Larger brand name */
+    font-weight: 700;
+    color: var(--primary-color); /* Primary color for brand */
+    letter-spacing: -0.5px;
+}
+
+.footer-description {
+    font-size: 1rem;
+    line-height: 1.6;
+    opacity: 0.8;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.footer-section h5 {
+    color: var(--accent-color); /* Teal color for headings */
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+}
+
+.footer-links li {
+    margin-bottom: 0.5rem; /* Space between links */
+}
+
+.footer-link {
+    color: rgba(255, 255, 255, 0.7); /* Muted white for links */
+    transition: color 0.3s ease, transform 0.3s ease;
+    display: inline-block; /* For transform */
+    text-decoration: none;
+}
+
+.footer-link:hover {
+    color: var(--primary-color); /* Primary color on hover */
+    text-decoration: none; /* No underline */
+    transform: translateX(5px); /* Slide effect */
+}
+
+.social-icons-group {
+    margin-top: 1.5rem;
+}
+
+.social-icon-link {
+    font-size: 1.8rem; /* Larger icons */
+    color: rgba(255, 255, 255, 0.7); /* Muted white */
+    margin: 0 10px; /* Spacing between icons */
+    transition: color 0.3s ease, transform 0.3s ease;
+    display: inline-block; /* For transform */
+}
+
+.social-icon-link:hover {
+    color: var(--primary-color); /* Primary color on hover */
+    transform: translateY(-5px) scale(1.1); /* Lift and slightly scale */
+}
+
+.footer-divider {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.footer-copyright {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.6);
+    margin-top: 2rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .footer-section {
+        text-align: center;
+    }
+    .footer-links {
+        padding-left: 0;
+    }
+    .footer-brand {
+        font-size: 2rem;
+    }
+    .social-icon-link {
+        margin: 0 8px;
+    }
+}

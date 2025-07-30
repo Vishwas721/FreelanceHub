@@ -1,0 +1,206 @@
+/* ActivityFeed.css - Ultra-Modern Upgrade */
+
+/* Base container for the activity feed widget */
+.activity-feed {
+    background-color: #FFFFFF; /* Clean white background */
+    padding: 35px; /* Generous internal spacing */
+    border-radius: 18px; /* Significantly more rounded corners for a soft look */
+    /* Multi-layered, soft shadows for depth */
+    box-shadow:
+        0 4px 15px rgba(0, 0, 0, 0.06), /* Primary soft shadow */
+        0 10px 30px rgba(0, 0, 0, 0.04); /* Secondary, wider shadow */
+    width: 100%;
+    max-width: 750px; /* Increased max-width to match DashboardStats */
+    box-sizing: border-box;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); /* Smooth, elegant transition */
+    font-family: 'Inter', sans-serif; /* Ensure Inter font is used */
+    color: #34495E; /* Darker, professional text color */
+    display: flex;
+    flex-direction: column; /* Stack title and list */
+    min-height: 350px; /* Ensure a minimum height for consistency with stats */
+}
+
+/* Hover effect for the entire widget */
+.activity-feed:hover {
+    transform: translateY(-8px); /* More pronounced lift on hover */
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.1), /* Stronger primary shadow */
+        0 15px 45px rgba(0, 0, 0, 0.08); /* Stronger secondary shadow */
+}
+
+/* Heading for the activity feed */
+.activity-feed h2 {
+    text-align: left; /* Align title to the left */
+    margin-bottom: 30px; /* More space below title */
+    color: #2C3E50; /* Deep blue-grey for heading */
+    font-size: 2.2em; /* Larger, more commanding title */
+    font-weight: 700; /* Bold */
+    position: relative;
+    padding-bottom: 15px; /* Space for the accent line */
+}
+
+/* Modern accent line below the heading */
+.activity-feed h2::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 60px; /* Length of the accent line */
+    height: 4px; /* Thickness of the accent line */
+    background: linear-gradient(90deg, #007BFF 0%, #00C6FF 100%); /* Vibrant blue gradient */
+    border-radius: 2px; /* Rounded ends for the line */
+}
+
+/* List container for activities */
+.activity-feed ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    flex-grow: 1; /* Allow list to take available height */
+    overflow-y: auto; /* Enable scrolling if content overflows */
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+    scrollbar-width: thin; /* Firefox */
+    scrollbar-color: #A0AEC0 #F0F2F5; /* Firefox scrollbar color */
+}
+
+/* Custom scrollbar for Webkit browsers */
+.activity-feed ul::-webkit-scrollbar {
+    width: 8px;
+}
+
+.activity-feed ul::-webkit-scrollbar-track {
+    background: #F0F2F5;
+    border-radius: 10px;
+}
+
+.activity-feed ul::-webkit-scrollbar-thumb {
+    background-color: #A0AEC0;
+    border-radius: 10px;
+    border: 2px solid #F0F2F5;
+}
+
+/* Individual activity item (card-like) */
+.activity-item {
+    background-color: #F8F9FA; /* Light grey background for each item */
+    padding: 18px 20px; /* Ample padding within each item */
+    margin-bottom: 12px; /* Space between items */
+    border-radius: 10px; /* Rounded corners for individual items */
+    border: 1px solid #E9ECEF; /* Subtle border */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04); /* Very light shadow for each item */
+    transition: all 0.2s ease;
+    display: flex;
+    flex-direction: column; /* Stack message and timestamp */
+    align-items: flex-start; /* Align text to the left */
+}
+
+.activity-item:last-child {
+    margin-bottom: 0; /* No margin below the last item */
+}
+
+.activity-item:hover {
+    background-color: #E9F5FF; /* Light blue on hover */
+    border-color: #007BFF; /* Primary blue border on hover */
+    transform: translateY(-3px); /* Slight lift on hover */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* More pronounced shadow on hover */
+}
+
+/* Activity message text */
+.activity-message {
+    font-size: 1.05em; /* Slightly larger message text */
+    color: #343A40; /* Dark text for readability */
+    line-height: 1.5;
+    margin-bottom: 8px; /* Space below message */
+    font-weight: 500; /* Medium weight for clarity */
+}
+
+/* Activity timestamp */
+.activity-timestamp {
+    font-size: 0.85em;
+    color: #868E96; /* Muted grey for timestamp */
+    align-self: flex-end; /* Push timestamp to the right within its item */
+    margin-top: auto; /* Ensures it's at the bottom if message is short */
+}
+
+/* No recent activity message */
+.no-recent-activity {
+    color: #6C757D; /* Muted grey */
+    font-style: italic;
+    font-size: 1.1em;
+    text-align: center;
+    padding: 30px;
+    background-color: #E9ECEF; /* Light grey background */
+    border-radius: 12px;
+    box-shadow: inset 0 1px 5px rgba(0, 0, 0, 0.05);
+    border: 1px solid #DEE2E6;
+    margin-top: 20px; /* Space from heading */
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+    .activity-feed {
+        padding: 30px;
+    }
+    .activity-feed h2 {
+        font-size: 2em;
+        margin-bottom: 25px;
+    }
+    .activity-feed h2::after {
+        width: 50px;
+        height: 3px;
+    }
+    .activity-item {
+        padding: 15px 18px;
+    }
+    .activity-message {
+        font-size: 1em;
+    }
+}
+
+@media (max-width: 768px) {
+    .activity-feed {
+        padding: 25px;
+        border-radius: 15px;
+    }
+    .activity-feed h2 {
+        font-size: 1.8em;
+        margin-bottom: 20px;
+    }
+    .activity-feed h2::after {
+        width: 40px;
+        height: 2px;
+    }
+    .activity-item {
+        padding: 12px 15px;
+    }
+    .activity-message {
+        font-size: 0.95em;
+    }
+    .activity-timestamp {
+        font-size: 0.8em;
+    }
+    .no-recent-activity {
+        font-size: 1em;
+        padding: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .activity-feed {
+        padding: 20px;
+        border-radius: 12px;
+    }
+    .activity-feed h2 {
+        font-size: 1.6em;
+        margin-bottom: 15px;
+    }
+    .activity-feed h2::after {
+        width: 30px;
+    }
+    .activity-item {
+        padding: 10px 12px;
+        margin-bottom: 10px;
+    }
+    .activity-message {
+        font-size: 0.9em;
+    }
+}

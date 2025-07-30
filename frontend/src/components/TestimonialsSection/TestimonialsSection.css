@@ -1,0 +1,104 @@
+/* src/components/TestimonialsSection/TestimonialsSection.css */
+
+.testimonials-section {
+    background-color: var(--light-bg);
+    position: relative; /* For potential background effects */
+    overflow: hidden;
+}
+
+/* Optional: Abstract background pattern for unique look */
+/*
+.testimonials-section::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    left: -50px;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle at top left, var(--primary-color) 0%, transparent 70%);
+    border-radius: 50%;
+    filter: blur(50px);
+    opacity: 0.1;
+    z-index: 0;
+}
+.testimonials-section::after {
+    content: '';
+    position: absolute;
+    bottom: -50px;
+    right: -50px;
+    width: 250px;
+    height: 250px;
+    background: radial-gradient(circle at bottom right, var(--accent-color) 0%, transparent 70%);
+    border-radius: 50%;
+    filter: blur(60px);
+    opacity: 0.1;
+    z-index: 0;
+}
+*/
+
+
+.testimonial-card {
+    background-color: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.05); /* Very light border */
+    border-radius: 15px; /* More rounded */
+    padding: 35px; /* More padding */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); /* Softer shadow */
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    z-index: 1; /* Ensure cards are above potential background effects */
+}
+
+.testimonial-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.15);
+}
+
+.testimonial-quote-icon {
+    font-size: 2.5rem; /* Larger quote icon */
+    color: var(--primary-color);
+    opacity: 0.7;
+    margin-bottom: 1.5rem;
+}
+
+.testimonial-text {
+    font-size: 1.15rem; /* Slightly larger text */
+    color: var(--text-dark);
+    line-height: 1.8;
+    margin-bottom: 25px; /* More space below text */
+    flex-grow: 1;
+    font-style: italic; /* Keep italic for quotes */
+}
+
+.testimonial-author-info {
+    text-align: right;
+    margin-top: auto; /* Pushes to bottom */
+}
+
+.testimonial-author {
+    font-size: 1.2rem; /* Larger author name */
+    font-weight: 700; /* Bolder */
+    color: var(--secondary-color); /* Secondary color for author */
+    margin-bottom: 5px;
+}
+
+.testimonial-title {
+    font-size: 0.95rem; /* Smaller title/designation */
+    color: #888;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .testimonial-card {
+        padding: 30px;
+    }
+    .testimonial-text {
+        font-size: 1.05rem;
+    }
+    .testimonial-author {
+        font-size: 1.1rem;
+    }
+}

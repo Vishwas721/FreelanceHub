@@ -1,0 +1,73 @@
+.floating-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 9999;
+}
+
+/* FAB button */
+.fab {
+    background-color: #20C997; /* Teal */
+    color: white;
+    border-radius: 50%;
+    width: 56px; /* Slightly smaller */
+    height: 56px;
+    font-size: 1.5em;
+    line-height: 1;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+    transition: background-color 0.2s ease-in-out, transform 0.1s ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.fab:hover {
+    background-color: #17A2B8; /* Darker teal */
+    transform: scale(1.05);
+}
+
+/* Quick action panel */
+.quick-actions {
+    position: absolute;
+    bottom: 65px;
+    right: 0;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    width: 150px;
+    animation: fadeIn 0.2s ease-in-out;
+    border: 1px solid #eee;
+}
+
+.quick-actions button {
+    display: block;
+    width: 100%;
+    padding: 8px 10px;
+    background: transparent;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+    font-size: 0.95em;
+    color: #333;
+    transition: background-color 0.15s ease-in-out;
+}
+
+.quick-actions button:hover {
+    background-color: #F8F9FA; /* Light gray on hover */
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

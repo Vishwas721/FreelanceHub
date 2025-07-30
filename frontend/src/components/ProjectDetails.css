@@ -1,0 +1,795 @@
+/* ProjectDetails.css */
+
+/* General Page Layout */
+.project-details-page-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #f0f2f5; /* Light grey background, consistent with Projects page */
+    font-family: 'Poppins', sans-serif;
+    color: #333;
+}
+/* Hero Section for Project Details */
+.project-details-hero {
+    position: relative;
+    padding: 80px 20px 60px; /* More padding */
+    /* UPDATED GRADIENT HERE */
+    background: linear-gradient(135deg, #1A293A 0%, #293D54 100%); /* Deep, sophisticated blue-grey gradient */
+    color: #ffffff;
+    text-align: center;
+    overflow: hidden;
+    margin-bottom: 40px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.hero-background-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3); /* Slightly darker overlay for better text contrast */
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.project-main-title {
+    font-size: 3.8em; /* Very large title */
+    font-weight: 800;
+    margin-bottom: 15px;
+    line-height: 1.1;
+    text-shadow: 3px 3px 6px rgba(255, 255, 255, 0.4);
+}
+
+.hero-description {
+    font-size: 1.4em;
+    opacity: 0.95;
+    margin-top: 20px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.5;
+}
+
+.project-status-badge {
+    display: inline-block;
+    padding: 8px 18px;
+    border-radius: 25px;
+    font-size: 1.1em;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-top: 15px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    letter-spacing: 0.5px;
+}
+
+/* Status specific colors */
+.project-status-badge.open { background-color: #28a745; } /* Green */
+.project-status-badge.assigned { background-color: #ffc107; color: #333;} /* Yellow */
+.project-status-badge.completed { background-color: #007bff; } /* Blue */
+.project-status-badge.closed { background-color: #dc3545; } /* Red */
+
+
+/* Main Content Wrapper & Tabs */
+.project-details-content-wrapper {
+    flex-grow: 1;
+    max-width: 1100px; /* Wider content area */
+    margin: 0 auto 60px; /* Centered with bottom margin */
+    padding: 0 20px;
+}
+
+.project-details-tabs {
+    display: flex;
+    justify-content: center; /* Center tabs */
+    margin-bottom: 30px;
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    gap: 15px; /* Space between tabs */
+}
+
+.tab-button {
+    background: none;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.2em;
+    font-weight: 600;
+    color: #555;
+    cursor: pointer;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    flex-grow: 1; /* Distribute space evenly */
+    text-align: center;
+}
+
+.tab-button:hover {
+    background-color: #f0f2f5;
+    color: #007bff;
+}
+
+.tab-button.active {
+    background: linear-gradient(45deg, #007bff, #0056b3); /* Gradient for active tab */
+    color: white;
+    box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
+    transform: translateY(-3px);
+}
+
+.tab-content-container {
+    background-color: #ffffff;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.tab-panel {
+    animation: fadeIn 0.5s ease-out; /* Fade in effect for tab content */
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Overview Section */
+.project-overview-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.overview-card, .skills-card, .bid-action-card, .upload-deliverable-card {
+    background-color: #fcfcfc;
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05); /* Inner shadow for subtle depth */
+    border: 1px solid #eee;
+    display: flex;
+    flex-direction: column;
+}
+.overview-card { grid-column: span 1; }
+.skills-card { grid-column: span 1; } /* Adjusted for two columns */
+.bid-action-card, .upload-deliverable-card { grid-column: span 2; } /* Spanning full width */
+
+
+.overview-card h3, .skills-card h3, .bid-action-card h4, .upload-deliverable-card h4 {
+    font-size: 1.6em;
+    color: #2c3e50;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px dashed #e0e0e0;
+}
+
+.detail-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 12px;
+    padding-bottom: 5px;
+    border-bottom: 1px dotted #f0f0f0;
+}
+
+.detail-row:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.detail-label {
+    font-weight: 600;
+    color: #555;
+    font-size: 1.05em;
+    flex-basis: 40%;
+}
+
+.detail-value {
+    font-size: 1.05em;
+    color: #333;
+    flex-basis: 60%;
+    text-align: right;
+}
+
+.budget-value {
+    color: #28a745;
+    font-weight: 700;
+    font-size: 1.2em;
+}
+
+/* Skills Tags in Overview */
+.skills-tags-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.skill-tag {
+    background-color: #e0f7fa; /* Light teal for tags */
+    color: #00838f;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 0.95em;
+    font-weight: 500;
+    border: 1px solid #b2ebf2;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+.skill-tag:hover {
+    background-color: #c7f2f8;
+    transform: translateY(-2px);
+}
+
+/* Bid Action Card & Form */
+.bid-action-card {
+    background: linear-gradient(145deg, #e6eefc, #ffffff);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 123, 255, 0.1);
+}
+.bid-action-card h4 {
+    color: #007bff;
+    font-size: 1.8em;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.call-to-action-button {
+    background: linear-gradient(45deg, #007bff, #00c6ff); /* Vibrant blue gradient */
+    color: white;
+    border: none;
+    padding: 18px 40px;
+    border-radius: 50px; /* Pill shape */
+    font-size: 1.4em;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: fit-content;
+    margin: 20px auto 0; /* Center button */
+    display: block;
+    box-shadow: 0 8px 20px rgba(0, 123, 255, 0.3);
+}
+
+.call-to-action-button:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 12px 25px rgba(0, 123, 255, 0.4);
+    background: linear-gradient(45deg, #0056b3, #0099e6);
+}
+
+.place-bid-form {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 30px;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #444;
+    font-size: 1.05em;
+}
+
+.form-group input[type="number"],
+.form-group textarea {
+    width: calc(100% - 22px); /* Account for padding */
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1em;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.08);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-group input[type="number"]:focus,
+.form-group textarea:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+    outline: none;
+}
+
+.form-group textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end; /* Align buttons to the right */
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.submit-bid-button {
+    background-color: #28a745;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.submit-bid-button:hover {
+    background-color: #218838;
+    transform: translateY(-2px);
+}
+
+.cancel-button {
+    background-color: #6c757d;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.cancel-button:hover {
+    background-color: #5a6268;
+    transform: translateY(-2px);
+}
+
+
+/* Bids Section */
+.bids-section h3 {
+    font-size: 2em;
+    color: #2c3e50;
+    margin-bottom: 25px;
+    text-align: center;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #f0f0f0;
+}
+
+.bids-list {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 25px;
+}
+
+.bid-item {
+    background-color: #fdfdfd;
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border: 1px solid #e9ecef;
+}
+
+.bid-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.bid-item.accepted { border-left: 5px solid #28a745; }
+.bid-item.rejected { border-left: 5px solid #dc3545; }
+.bid-item.pending { border-left: 5px solid #ffc107; }
+
+.bid-info p {
+    margin-bottom: 8px;
+    line-height: 1.4;
+}
+
+.bid-info strong {
+    color: #333;
+}
+
+.highlight-amount {
+    font-size: 1.3em;
+    font-weight: 700;
+    color: #28a745;
+}
+
+.bid-proposal {
+    background-color: #f8f9fa;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px dashed #e9ecef;
+    margin: 15px 0;
+    font-style: italic;
+    color: #666;
+    line-height: 1.6;
+}
+
+.bid-status {
+    margin-top: 15px;
+    font-weight: 600;
+    color: #444;
+}
+
+.status-label {
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 0.9em;
+    font-weight: 700;
+    text-transform: capitalize;
+}
+.status-label.pending { background-color: #ffe082; color: #ffa000; }
+.status-label.accepted { background-color: #d4edda; color: #28a745; }
+.status-label.rejected { background-color: #f8d7da; color: #dc3545; }
+
+
+.bid-actions {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+}
+
+.award-button {
+    background-color: #28a745;
+    padding: 10px 20px;
+    font-size: 0.95em;
+    border-radius: 6px;
+}
+.award-button:hover { background-color: #218838; }
+
+.reject-button {
+    background-color: #dc3545;
+    padding: 10px 20px;
+    font-size: 0.95em;
+    border-radius: 6px;
+}
+.reject-button:hover { background-color: #c82333; }
+
+.no-bids-message {
+    text-align: center;
+    font-size: 1.1em;
+    color: #777;
+    padding: 30px;
+    border: 1px dashed #e0e0e0;
+    border-radius: 10px;
+    background-color: #fdfdfd;
+}
+
+/* Deliverables Section */
+.deliverables-section h3 {
+    font-size: 2em;
+    color: #2c3e50;
+    margin-bottom: 25px;
+    text-align: center;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #f0f0f0;
+}
+
+.upload-deliverable-card {
+    background: linear-gradient(145deg, #e0ffe0, #ffffff);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(40, 167, 69, 0.1); /* Green shadow */
+    margin-bottom: 30px;
+}
+.upload-deliverable-card h4 {
+    color: #28a745;
+    font-size: 1.8em;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.deliverable-upload-form .form-group input[type="file"] {
+    border: 1px dashed #ccc;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: #fdfdfd;
+}
+
+.submit-upload-button {
+    background-color: #17a2b8; /* Info blue for upload */
+    color: white;
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    border: none;
+    cursor: pointer;
+    display: block; /* Make it block to take full width if needed or center */
+    margin-top: 20px;
+}
+
+.submit-upload-button:hover {
+    background-color: #138496;
+    transform: translateY(-2px);
+}
+
+
+.no-deliverables-message {
+    text-align: center;
+    font-size: 1.1em;
+    color: #777;
+    padding: 30px;
+    border: 1px dashed #e0e0e0;
+    border-radius: 10px;
+    background-color: #fdfdfd;
+}
+
+.deliverables-list {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.deliverable-item {
+    background-color: #fcfcfc;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border: 1px solid #e9ecef;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.deliverable-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+.deliverable-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+.file-icon {
+    font-size: 2.5em;
+    color: #3498db; /* Blue icon */
+    flex-shrink: 0;
+}
+
+.file-details {
+    flex-grow: 1;
+}
+
+.file-name {
+    font-weight: 600;
+    font-size: 1.1em;
+    color: #333;
+    word-break: break-word; /* Ensure long file names wrap */
+}
+
+.upload-date {
+    font-size: 0.9em;
+    color: #777;
+    margin-top: 5px;
+}
+
+.file-description {
+    font-size: 0.95em;
+    color: #555;
+    margin-top: 10px;
+    background-color: #f0f2f5;
+    padding: 10px;
+    border-radius: 8px;
+    border-left: 3px solid #007bff;
+}
+
+.download-button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 30px; /* Pill shape */
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95em;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    display: flex; /* For icon alignment */
+    align-items: center;
+    gap: 8px;
+    align-self: flex-end; /* Align to the end of the item */
+    box-shadow: 0 4px 10px rgba(0, 123, 255, 0.2);
+}
+
+.download-button:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 123, 255, 0.3);
+}
+
+.download-icon {
+    font-size: 1.2em;
+}
+
+
+/* Common Message Styles */
+.info-message, .success-message, .error-message {
+    padding: 15px 20px;
+    border-radius: 8px;
+    margin-top: 25px;
+    font-size: 1.1em;
+    text-align: center;
+    font-weight: 500;
+    line-height: 1.4;
+}
+
+.info-message {
+    background-color: #e0f7fa;
+    color: #007bb6;
+    border: 1px solid #00acc1;
+}
+
+.success-message {
+    background-color: #d4edda;
+    color: #28a745;
+    border: 1px solid #28a745;
+}
+
+.error-message {
+    background-color: #f8d7da;
+    color: #dc3545;
+    border: 1px solid #dc3545;
+}
+
+
+/* Loading and Error States */
+.loading-state, .error-state {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 400px;
+    text-align: center;
+    font-size: 1.3em;
+    color: #666;
+    margin: 60px auto;
+    padding: 50px;
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    max-width: 700px;
+}
+
+.loading-state p, .error-state p {
+    margin-top: 20px;
+    font-size: 1em;
+}
+
+.error-state h2 {
+    color: #dc3545;
+    font-size: 2em;
+    margin-bottom: 15px;
+}
+
+.spinner {
+    border: 8px solid rgba(0, 123, 255, 0.2);
+    border-top: 8px solid #007bff;
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    animation: spin 1.2s linear infinite;
+    margin-bottom: 30px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.retry-button {
+    background-color: #007bff;
+    color: white;
+    padding: 15px 30px;
+    border-radius: 50px;
+    font-size: 1.1em;
+    font-weight: 600;
+    margin-top: 30px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 123, 255, 0.2);
+}
+.retry-button:hover {
+    background-color: #0056b3;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 123, 255, 0.3);
+}
+
+
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+    .project-main-title {
+        font-size: 3em;
+    }
+    .hero-description {
+        font-size: 1.2em;
+    }
+    .project-details-tabs {
+        flex-wrap: wrap; /* Allow tabs to wrap */
+        gap: 10px;
+        padding: 8px;
+    }
+    .tab-button {
+        padding: 12px 20px;
+        font-size: 1.1em;
+    }
+    .project-overview-section {
+        grid-template-columns: 1fr; /* Single column layout on medium screens */
+    }
+    .overview-card, .skills-card, .bid-action-card, .upload-deliverable-card {
+        grid-column: span 1 !important; /* Override span 2 on smaller screens */
+    }
+    .bids-list, .deliverables-list {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .project-details-hero {
+        padding: 60px 15px 40px;
+    }
+    .project-main-title {
+        font-size: 2.5em;
+    }
+    .hero-description {
+        font-size: 1em;
+    }
+    .project-details-content-wrapper {
+        padding: 0 15px;
+    }
+    .tab-button {
+        font-size: 1em;
+        padding: 10px 15px;
+    }
+    .overview-card, .skills-card, .bid-action-card, .upload-deliverable-card, .bid-item, .deliverable-item {
+        padding: 20px;
+    }
+    .overview-card h3, .skills-card h3, .bid-action-card h4, .upload-deliverable-card h4, .bids-section h3, .deliverables-section h3 {
+        font-size: 1.5em;
+    }
+    .detail-label, .detail-value, .skill-tag, .form-group label {
+        font-size: 0.95em;
+    }
+    .form-group input, .form-group textarea {
+        font-size: 0.9em;
+    }
+    .call-to-action-button, .submit-bid-button, .cancel-button, .submit-upload-button, .award-button, .reject-button, .download-button {
+        font-size: 0.95em;
+        padding: 10px 20px;
+    }
+    .bid-actions {
+        flex-direction: column; /* Stack buttons on small screens */
+        gap: 10px;
+    }
+    .award-button, .reject-button {
+        width: 100%;
+        box-sizing: border-box;
+    }
+}
+
+@media (max-width: 480px) {
+    .project-main-title {
+        font-size: 2em;
+    }
+    .project-status-badge {
+        font-size: 0.9em;
+        padding: 6px 15px;
+    }
+    .project-details-tabs {
+        flex-direction: column; /* Stack tabs vertically */
+    }
+    .tab-button {
+        width: 100%;
+        box-sizing: border-box;
+    }
+    .bid-info p, .bid-proposal, .file-name, .upload-date, .file-description {
+        font-size: 0.9em;
+    }
+}

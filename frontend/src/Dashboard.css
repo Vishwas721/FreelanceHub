@@ -1,0 +1,544 @@
+/* Dashboard.css - Revamped for a Modern UI (with enhanced card content) */
+
+/* Base Styles & General Layout */
+.dashboard-container {
+    display: flex;
+    min-height: 100vh;
+    background-color: #F8F9FA; /* Very light grey, almost white */
+    color: #343A40; /* Darker text for better readability */
+    font-family: 'Inter', sans-serif; /* Modern, clean font */
+    overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+/* Sidebar */
+.sidebar {
+    width: 250px; /* Slightly wider sidebar for better content spacing */
+    background-color: #FFFFFF; /* Pure white sidebar */
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex-shrink: 0;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05); /* Subtle right shadow */
+    transition: width 0.3s ease-in-out; /* Smooth transition for potential collapse */
+}
+
+.sidebar-title {
+    color: #2C3E50; /* Deep, professional blue-grey */
+    margin-bottom: 30px;
+    font-size: 1.8em;
+    font-weight: 700;
+}
+
+/* User Info in Sidebar */
+.user-info-sidebar {
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #E9ECEF; /* Light, subtle border */
+    width: 100%;
+    text-align: left;
+}
+
+.user-info-sidebar .welcome-text {
+    font-size: 0.9em;
+    color: #6C757D; /* Muted grey */
+    display: block;
+    margin-bottom: 5px;
+}
+
+.user-info-sidebar .username-text {
+    font-size: 1.2em;
+    font-weight: 600;
+    color: #007BFF; /* Primary accent blue */
+    display: block;
+}
+
+.user-info-sidebar .role-indicator {
+    font-size: 0.85em;
+    color: #868E96; /* Lighter muted grey */
+    display: block;
+    margin-top: 5px;
+    background-color: #E9F5FF; /* Very light blue background */
+    padding: 3px 8px;
+    border-radius: 4px;
+    width: fit-content; /* Fit to content width */
+}
+
+/* Sidebar Buttons */
+.sidebar-button {
+    background: none;
+    border: none;
+    padding: 12px 15px;
+    margin-bottom: 10px;
+    color: #495057; /* Dark grey for text */
+    cursor: pointer;
+    font-size: 1em;
+    width: 100%;
+    text-align: left;
+    transition: all 0.25s ease; /* Smooth transition */
+    border-radius: 8px; /* Rounded corners */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-weight: 500;
+}
+
+.sidebar-button:hover {
+    background-color: #E9F5FF; /* Light blue on hover */
+    color: #007BFF; /* Primary blue text on hover */
+    transform: translateX(5px); /* Subtle slide effect */
+}
+
+.sidebar-button.notification-button .badge,
+.sidebar-button .badge.bg-primary {
+    margin-left: 10px;
+    font-size: 0.75em;
+    padding: 0.4em 0.7em;
+    border-radius: 50rem;
+    background-color: #DC3545 !important; /* Danger red for notifications */
+    color: white;
+    font-weight: 600;
+}
+
+.sidebar-button .badge.bg-primary {
+    background-color: #007BFF !important; /* Primary blue for assigned projects */
+}
+
+.sidebar-button.switch-role-button {
+    background-color: #20C997; /* Teal for switch role */
+    color: white;
+    font-weight: 600;
+    margin-top: 20px; /* More space above switch role button */
+    box-shadow: 0 4px 10px rgba(32, 201, 151, 0.2); /* Subtle shadow */
+}
+
+.sidebar-button.switch-role-button:hover {
+    background-color: #1AA880; /* Darker teal on hover */
+    transform: translateY(-2px); /* Lift effect */
+    box-shadow: 0 6px 15px rgba(32, 201, 151, 0.3);
+    color: white; /* Keep text white on hover */
+}
+
+.sidebar-button.logout-button {
+    margin-top: auto; /* Push logout to the bottom */
+    color: #DC3545; /* Red for logout */
+    font-weight: 600;
+    border-top: 1px solid #E9ECEF; /* Separator line */
+    padding-top: 20px;
+    border-radius: 0; /* Remove top border-radius */
+}
+
+.sidebar-button.logout-button:hover {
+    background-color: #F8D7DA; /* Light red on hover */
+    color: #DC3545;
+    transform: translateX(5px);
+}
+
+/* Main Content Area */
+.content {
+    flex-grow: 1;
+    padding: 30px 40px; /* More padding for content */
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.dashboard-header {
+    margin-bottom: 30px;
+    text-align: left;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #E9ECEF; /* Subtle separator */
+}
+
+.dashboard-heading {
+    color: #2C3E50; /* Deep blue-grey */
+    font-size: 2.5em; /* Larger heading */
+    margin: 0;
+    font-weight: 700;
+}
+
+/* Card Container */
+.card-container {
+    display: grid; /* Use grid for better layout control */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Flexible columns */
+    gap: 25px; /* Increased gap */
+    margin-bottom: 40px;
+    width: 100%;
+}
+
+.card {
+    background-color: #FFFFFF;
+    padding: 25px; /* More internal padding */
+    border-radius: 12px; /* More rounded corners */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08); /* Stronger, softer shadow */
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Distribute content */
+}
+
+.clickable-card:hover {
+    transform: translateY(-5px); /* More pronounced lift */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15); /* Enhanced shadow */
+}
+
+.card-header {
+    background-color: transparent; /* Transparent header background */
+    padding: 0; /* Remove padding */
+    border-bottom: none; /* No border for header */
+    margin-bottom: 15px;
+}
+
+.card-title {
+    color: #2C3E50;
+    font-size: 1.5em; /* Larger card titles */
+    font-weight: 600;
+    margin-bottom: 0;
+}
+
+/* --- NEW / MODIFIED: Styles for the "View Projects" and "My Assigned Projects" card content --- */
+.card-content.card-cta-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Pushes action text to bottom */
+    flex-grow: 1; /* Allows content to take up available space */
+    padding: 0; /* Remove default card-content padding here, children will handle it */
+    margin-top: 15px; /* Space from title */
+}
+
+.card-icon-wrapper {
+    margin-bottom: 15px; /* Space below icon */
+    background-color: #E9F5FF; /* Light blue background for icon */
+    border-radius: 50%; /* Make it a circle */
+    width: 50px; /* Size of the icon background */
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-icon {
+    font-size: 1.8em; /* Large icon size */
+    color: #007BFF; /* Primary blue icon color */
+}
+
+.card-description {
+    color: #6C757D;
+    font-size: 0.95em;
+    line-height: 1.5;
+    margin-bottom: 20px; /* Space before action text */
+}
+
+.card-action-text {
+    color: #007BFF; /* Primary blue for action text */
+    font-weight: 600;
+    font-size: 1em;
+    display: flex;
+    align-items: center;
+    margin-top: auto; /* Push to the bottom of the flex container */
+    transition: transform 0.2s ease;
+}
+
+.clickable-card:hover .card-action-text {
+    transform: translateX(5px); /* Slide text on card hover */
+}
+
+.card-action-text .bi {
+    margin-left: 8px; /* Space for the arrow icon */
+    font-size: 0.9em; /* Smaller arrow */
+    transition: transform 0.2s ease;
+}
+
+/* For assigned projects count (if present) */
+.card-badge-info {
+    font-size: 0.85em;
+    color: #868E96;
+    margin-top: 10px; /* Adjusted margin */
+    font-style: italic;
+    background-color: #E9F5FF;
+    padding: 4px 10px;
+    border-radius: 6px;
+    width: fit-content;
+    margin-bottom: 15px; /* Space below the badge */
+}
+
+
+/* --- Existing: Styling for recent activity items --- */
+.recent-projects-list {
+    margin-top: 0; /* Remove default ul margin-top */
+}
+
+.project-activity-item { /* NEW CLASS for individual list items */
+    display: flex;
+    flex-direction: column; /* Stack title and details */
+    align-items: flex-start;
+    padding: 12px 15px; /* Padding for each item */
+    margin-bottom: 10px; /* Space between items */
+    background-color: #F8F9FA; /* Light background for items */
+    border-radius: 8px; /* Rounded corners for items */
+    border: 1px solid #E9ECEF; /* Subtle border */
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04); /* Very light shadow for each item */
+}
+
+.project-activity-item:hover {
+    background-color: #E9F5FF; /* Lighter blue on hover */
+    border-color: #007BFF; /* Primary blue border on hover */
+    transform: translateY(-2px); /* Slight lift */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* More pronounced shadow */
+}
+
+.project-activity-item .project-title-link {
+    font-weight: 600;
+    font-size: 1.1em;
+    color: #2C3E50; /* Darker title */
+    text-decoration: none; /* Remove underline */
+    margin-bottom: 5px;
+}
+
+.project-activity-item .project-title-link:hover {
+    color: #007BFF; /* Blue on hover */
+}
+
+.project-activity-item .project-status {
+    font-size: 0.85em;
+    color: #6C757D;
+    background-color: #E2E3E5;
+    padding: 3px 8px;
+    border-radius: 4px;
+    text-transform: capitalize;
+    margin-top: 5px;
+}
+
+.view-all-link {
+    text-align: right;
+    margin-top: 15px;
+    font-size: 0.9em;
+}
+
+.view-all-button {
+    background: none;
+    border: none;
+    color: #007BFF;
+    cursor: pointer;
+    text-decoration: none; /* No underline by default */
+    font-weight: 600;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: background-color 0.2s ease;
+}
+
+.view-all-button:hover {
+    background-color: #E9F5FF;
+    text-decoration: none; /* Keep no underline */
+}
+
+/* Dashboard Flex Container for Widgets */
+.dashboard-flex {
+    display: grid; /* Use grid for widgets */
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* Flexible columns for widgets */
+    gap: 25px;
+    margin-bottom: 40px;
+    width: 100%;
+}
+
+.stats-activity-container {
+    display: contents; /* Allows children to participate in parent grid */
+}
+
+/* Draggable Widget */
+.widget {
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    padding: 25px;
+    box-sizing: border-box;
+    min-height: 200px; /* Ensure a minimum height for widgets */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    transition: transform 0.2s ease;
+}
+
+.widget h3 {
+    color: #007BFF;
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 1.3em;
+    font-weight: 600;
+}
+
+/* Hovering state for drop target */
+.hovering {
+    background-color: #E0F7FA;
+    border: 2px dashed #007BFF;
+    box-shadow: 0 0 20px rgba(0, 123, 255, 0.2);
+}
+
+/* --- Responsive adjustments --- */
+
+@media (max-width: 1024px) {
+    .sidebar {
+        width: 220px;
+        padding: 25px 15px;
+    }
+    .content {
+        padding: 25px 30px;
+    }
+    .dashboard-heading {
+        font-size: 2em;
+    }
+    .card-container {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+    }
+    .widget {
+        min-height: 180px;
+    }
+    .project-activity-item {
+        padding: 10px 12px;
+    }
+    .card-icon-wrapper {
+        width: 45px;
+        height: 45px;
+    }
+    .card-icon {
+        font-size: 1.6em;
+    }
+}
+
+@media (max-width: 768px) {
+    .dashboard-container {
+        flex-direction: column;
+    }
+    .sidebar {
+        width: 100%;
+        padding: 20px;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); /* Shadow at the bottom */
+        border-bottom: none; /* Remove explicit border-bottom */
+    }
+    .sidebar-title {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 20px;
+        font-size: 1.6em;
+    }
+    .user-info-sidebar {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 20px;
+        border-bottom: none;
+        padding-bottom: 0;
+    }
+    .user-info-sidebar .welcome-text,
+    .user-info-sidebar .username-text,
+    .user-info-sidebar .role-indicator {
+        display: inline;
+        margin: 0 5px;
+    }
+    .user-info-sidebar .role-indicator {
+        font-size: 0.75em;
+        padding: 2px 6px;
+    }
+    .sidebar button {
+        width: auto;
+        flex-grow: 1;
+        margin: 5px;
+        text-align: center;
+        justify-content: center;
+        font-size: 0.95em;
+        padding: 10px 12px;
+    }
+    .sidebar-button .badge {
+        position: static;
+        margin-left: 5px;
+    }
+    .sidebar-button.logout-button {
+        margin-top: 10px; /* Adjust margin */
+        border-top: none; /* Remove border */
+        padding-top: 10px;
+    }
+
+    .content {
+        padding: 20px 20px;
+    }
+    .dashboard-heading {
+        font-size: 2em; /* Keep it relatively large for impact */
+        text-align: center;
+        margin-bottom: 25px;
+    }
+    .card-container, .dashboard-flex {
+        grid-template-columns: 1fr; /* Stack all cards/widgets */
+        gap: 20px;
+    }
+    .card, .widget {
+        width: 100%;
+        max-width: 95%; /* Small margin from edges */
+        margin-left: auto;
+        margin-right: auto;
+        padding: 20px;
+    }
+    .card-title {
+        font-size: 1.3em;
+    }
+    .widget h3 {
+        font-size: 1.2em;
+    }
+    .project-activity-item {
+        padding: 10px 12px;
+    }
+    .card-icon-wrapper {
+        width: 40px;
+        height: 40px;
+        margin-bottom: 10px;
+    }
+    .card-icon {
+        font-size: 1.5em;
+    }
+    .card-description {
+        margin-bottom: 15px;
+    }
+    .card-badge-info {
+        margin-bottom: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .dashboard-heading {
+        font-size: 1.7em;
+    }
+    .sidebar-title {
+        font-size: 1.4em;
+    }
+    .sidebar button {
+        font-size: 0.9em;
+        padding: 8px 10px;
+    }
+    .card-title {
+        font-size: 1.2em;
+    }
+    .card-content, .card p, .card li, .view-all-button {
+        font-size: 0.9em;
+    }
+    .widget h3 {
+        font-size: 1.1em;
+    }
+    .widget {
+        padding: 15px;
+    }
+    .project-activity-item .project-title-link {
+        font-size: 1em;
+    }
+    .card-icon-wrapper {
+        width: 35px;
+        height: 35px;
+    }
+    .card-icon {
+        font-size: 1.3em;
+    }
+}

@@ -1,0 +1,151 @@
+/* DashboardStats.css - Ultra-Modern Upgrade */
+
+/* Base container for the stats widget */
+.stats-wrapper {
+    background-color: #FFFFFF; /* Clean white background */
+    padding: 35px; /* Generous internal spacing */
+    border-radius: 18px; /* Significantly more rounded corners for a soft look */
+    /* Multi-layered, soft shadows for depth */
+    box-shadow:
+        0 4px 15px rgba(0, 0, 0, 0.06), /* Primary soft shadow */
+        0 10px 30px rgba(0, 0, 0, 0.04); /* Secondary, wider shadow */
+    width: 100%;
+    max-width: 750px; /* Increased max-width for a more expansive feel */
+    box-sizing: border-box;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); /* Smooth, elegant transition */
+    font-family: 'Inter', sans-serif; /* Ensure Inter font is used */
+    color: #34495E; /* Darker, professional text color */
+}
+
+/* Hover effect for the entire widget */
+.stats-wrapper:hover {
+    transform: translateY(-8px); /* More pronounced lift on hover */
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.1), /* Stronger primary shadow */
+        0 15px 45px rgba(0, 0, 0, 0.08); /* Stronger secondary shadow */
+}
+
+/* Heading for the stats widget */
+.stats-wrapper h2 {
+    text-align: left; /* Align title to the left */
+    margin-bottom: 30px; /* More space below title */
+    color: #2C3E50; /* Deep blue-grey for heading */
+    font-size: 2.2em; /* Larger, more commanding title */
+    font-weight: 700; /* Bold */
+    position: relative;
+    padding-bottom: 15px; /* Space for the accent line */
+}
+
+/* Modern accent line below the heading */
+.stats-wrapper h2::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 60px; /* Length of the accent line */
+    height: 4px; /* Thickness of the accent line */
+    background: linear-gradient(90deg, #007BFF 0%, #00C6FF 100%); /* Vibrant blue gradient */
+    border-radius: 2px; /* Rounded ends for the line */
+}
+
+/* Messages for loading, error, and no data */
+.error-message,
+.loading-message,
+.no-data-message {
+    color: #6C757D; /* Muted grey for informational messages */
+    font-style: italic;
+    font-size: 1.1em; /* Slightly larger text */
+    text-align: center;
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #E9ECEF; /* Light grey background */
+    border-radius: 12px; /* Rounded corners */
+    box-shadow: inset 0 1px 5px rgba(0, 0, 0, 0.05); /* Subtle inner shadow */
+    border: 1px solid #DEE2E6; /* Light border */
+}
+
+.error-message {
+    background-color: #F8D7DA; /* Light red for errors */
+    color: #DC3545; /* Red text */
+    border-color: #F5C6CB;
+    font-weight: 500;
+}
+
+/* Chart container styling */
+.chart-container {
+    background-color: #F0F4F8; /* A slightly darker, cool grey background for the chart area */
+    border-radius: 12px; /* Consistent rounded corners */
+    padding: 25px; /* Ample padding inside the chart container */
+    box-shadow: inset 0 3px 8px rgba(0, 0, 0, 0.08); /* Deeper inner shadow for the chart area */
+    height: 400px; /* Taller chart for better visualization */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Ensure chart elements don't spill out */
+}
+
+/* Chart.js specific overrides for responsiveness and appearance */
+.stats-wrapper .chartjs-render-monitor {
+    width: 100% !important; /* Ensure chart takes full width */
+    height: auto !important; /* Maintain aspect ratio */
+    max-height: 100%; /* Ensure it fits within the container */
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+    .stats-wrapper {
+        padding: 30px;
+    }
+    .stats-wrapper h2 {
+        font-size: 2em;
+        margin-bottom: 25px;
+    }
+    .chart-container {
+        height: 350px; /* Adjust height for medium screens */
+        padding: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .stats-wrapper {
+        padding: 25px;
+        border-radius: 15px; /* Slightly less rounded for smaller screens */
+    }
+    .stats-wrapper h2 {
+        font-size: 1.8em;
+        margin-bottom: 20px;
+    }
+    .stats-wrapper h2::after {
+        width: 50px; /* Shorter accent line */
+        height: 3px;
+    }
+    .chart-container {
+        height: 300px; /* Adjust height for smaller screens */
+        padding: 15px;
+    }
+    .error-message,
+    .loading-message,
+    .no-data-message {
+        font-size: 1em;
+        padding: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .stats-wrapper {
+        padding: 20px;
+        border-radius: 12px;
+    }
+    .stats-wrapper h2 {
+        font-size: 1.6em;
+        margin-bottom: 15px;
+    }
+    .stats-wrapper h2::after {
+        width: 40px; /* Even shorter accent line */
+        height: 2px;
+    }
+    .chart-container {
+        height: 250px; /* Further adjust height for mobile */
+        padding: 10px;
+    }
+}

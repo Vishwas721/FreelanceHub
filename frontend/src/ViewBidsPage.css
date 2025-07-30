@@ -1,0 +1,314 @@
+/* src/pages/ViewBidsPage.css */
+
+.view-bids-container {
+    padding: 40px 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+    background-color: #F8F9FA; /* Light background for the overall page */
+    min-height: calc(100vh - 60px); /* Adjust for footer/header */
+    font-family: 'Poppins', sans-serif;
+    color: #333;
+}
+
+/* Header Section */
+.bids-header {
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    margin-bottom: 30px;
+    border-top: 5px solid #007BFF; /* A bold blue accent line */
+    position: relative;
+}
+
+.bids-page-title {
+    color: #007BFF;
+    font-size: 2.2em;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.project-description {
+    color: #555;
+    font-size: 1.1em;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.project-details {
+    color: #777;
+    font-size: 0.95em;
+    margin-bottom: 20px;
+}
+
+.project-details .detail-value {
+    font-weight: bold;
+    color: #333;
+}
+
+/* Project Status in Header */
+.project-status {
+    font-weight: bold;
+    padding: 4px 10px;
+    border-radius: 5px;
+    display: inline-block;
+    margin-left: 5px;
+    text-transform: uppercase;
+    font-size: 0.9em;
+}
+
+.status-open { background-color: #d4edda; color: #155724; } /* Green */
+.status-assigned { background-color: #cfe2ff; color: #052c65; } /* Light Blue */
+.status-in-progress { background-color: #fff3cd; color: #664d03; } /* Yellow */
+.status-completed { background-color: #e2e3e5; color: #495057; } /* Grey */
+.status-cancelled { background-color: #f8d7da; color: #721c24; } /* Red */
+
+
+.back-button {
+    background-color: #E3F2FD; /* Your main color for buttons */
+    color: #007BFF; /* Darker blue text */
+    border: 1px solid #BBDEFB;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 15px;
+}
+
+.back-button:hover {
+    background-color: #BBDEFB;
+    box-shadow: 0 2px 8px rgba(0, 123, 255, 0.2);
+    transform: translateY(-1px);
+}
+
+/* Messages (Success/Error) */
+.alert-message {
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 25px;
+    font-weight: 500;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.alert-message.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #81c784;
+}
+
+.alert-message.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #e57373;
+}
+
+/* Bids List Grid */
+.bids-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 25px;
+}
+
+/* Individual Bid Card */
+.bid-card {
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid #eee;
+    transition: transform 0.2s ease;
+}
+
+.bid-card:hover {
+    transform: translateY(-3px);
+}
+
+/* Status Border on Bid Card */
+.bid-card.status-accepted { border-left: 6px solid #28a745; } /* Green */
+.bid-card.status-rejected { border-left: 6px solid #dc3545; } /* Red */
+.bid-card.status-pending { border-left: 6px solid #ffc107; } /* Yellow/Orange */
+
+
+.bid-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start; /* Align freelancer name and amount to top */
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px dashed #CFD8DC;
+}
+
+.freelancer-name {
+    font-size: 1.5em;
+    color: #007BFF;
+    margin: 0;
+    font-weight: 600;
+    flex-shrink: 1; /* Allow to shrink if amount is long */
+}
+
+.bid-amount-section {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    flex-shrink: 0; /* Prevent shrinking */
+}
+
+.bid-amount {
+    font-size: 1.6em;
+    font-weight: bold;
+    color: #28a745; /* Green for amount */
+    line-height: 1; /* Adjust line height for alignment */
+}
+
+.delivery-days {
+    font-size: 0.85em;
+    color: #777;
+    margin-top: 5px;
+}
+
+.bid-message {
+    font-size: 0.95em;
+    color: #555;
+    line-height: 1.5;
+    margin-bottom: 15px;
+    flex-grow: 1; /* Allows message to take available space */
+}
+
+.bid-info {
+    font-size: 0.85em;
+    color: #777;
+    margin-top: auto; /* Pushes to bottom */
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding-top: 15px;
+    border-top: 1px dashed #CFD8DC;
+}
+
+.bid-info > span {
+    background-color: #F0F4F7;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-weight: 500;
+}
+
+.bid-status-badge {
+    text-transform: uppercase;
+    font-weight: bold;
+}
+.bid-status-badge.status-pending { background-color: #fff3cd; color: #664d03; }
+.bid-status-badge.status-accepted { background-color: #d4edda; color: #155724; }
+.bid-status-badge.status-rejected { background-color: #f8d7da; color: #721c24; }
+
+.freelancer-rating {
+    color: #FFC107; /* Star color */
+}
+
+/* Bid Actions */
+.bid-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px dashed #CFD8DC;
+}
+
+.action-button {
+    padding: 12px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.95em;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    flex-grow: 1;
+    text-align: center;
+}
+
+.accept-button {
+    background-color: #28a745; /* Green */
+    color: white;
+    border: 1px solid #218838;
+}
+
+.accept-button:hover {
+    background-color: #218838;
+    box-shadow: 0 4px 10px rgba(40, 167, 69, 0.3);
+}
+
+.reject-button {
+    background-color: #dc3545; /* Red */
+    color: white;
+    border: 1px solid #c82333;
+}
+
+.reject-button:hover {
+    background-color: #c82333;
+    box-shadow: 0 4px 10px rgba(220, 53, 69, 0.3);
+}
+
+/* Empty/Loading/Error States for View Bids */
+.loading-state, .error-state, .no-bids-message, .no-project-state {
+    background-color: #E3F2FD;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 1.1em;
+    color: #0056b3;
+    margin-top: 30px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.error-state {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .view-bids-container {
+        padding: 20px 15px;
+    }
+
+    .bids-header {
+        padding: 20px;
+    }
+
+    .bids-page-title {
+        font-size: 1.8em;
+    }
+
+    .project-description {
+        font-size: 1em;
+    }
+
+    .bids-list {
+        grid-template-columns: 1fr;
+    }
+
+    .bid-card {
+        padding: 20px;
+    }
+
+    .freelancer-name {
+        font-size: 1.3em;
+    }
+
+    .bid-amount {
+        font-size: 1.4em;
+    }
+
+    .action-button {
+        padding: 10px 15px;
+        font-size: 0.9em;
+    }
+}

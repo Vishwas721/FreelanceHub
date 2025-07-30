@@ -1,0 +1,202 @@
+/* src/components/Header.css */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Montserrat:wght@700;800;900&display=swap');
+
+:root {
+    --color-primary-blue: #2563eb;
+    --color-primary-dark-blue: #1d4ed8;
+    --color-secondary-purple: #6D28D9; /* A new accent color */
+    --color-secondary-dark-purple: #5B21B6;
+    --color-text-light: #f8f9fa; /* For text on dark backgrounds */
+    --color-text-dark: #1a202c;
+    --color-header-bg-start: #E3F2FD;
+    --color-header-bg-end: #E3F2FD;
+    --shadow-md: 0 6px 10px -2px rgba(0, 0, 0, 0.15);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+
+.main-header {
+    background: linear-gradient(90deg, var(--color-header-bg-start) 0%, var(--color-header-bg-end) 100%); /* Subtle gradient */
+    color: var(--color-text-dark);
+    padding: 20px 40px; /* More padding */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.05); /* Softer, thicker border */
+    box-shadow: var(--shadow-lg); /* More pronounced shadow */
+    font-family: 'Inter', sans-serif;
+    position: sticky; /* Make it sticky */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; /* Ensure it stays on top */
+    transition: all 0.3s ease-in-out;
+    min-height: 80px; /* Consistent height */
+}
+
+/* Optional: Slight shrinking on scroll (requires JS to add a class) */
+/*
+.main-header.scrolled {
+    padding: 10px 30px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+}
+*/
+
+.logo {
+    font-family: 'Montserrat', sans-serif; /* Use Montserrat for logo */
+    font-size: 2.5em; /* Larger logo */
+    font-weight: 900; /* Extra bold */
+    background: linear-gradient(45deg, var(--color-primary-blue), var(--color-secondary-purple)); /* Gradient text */
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 4px 8px rgba(var(--color-primary-blue-rgb, 37, 99, 235), 0.3); /* Subtle glow */
+    letter-spacing: -0.05em; /* Tighter spacing */
+    transition: all 0.3s ease;
+    cursor: pointer;
+    line-height: 1; /* Prevent extra space */
+}
+
+.logo:hover {
+    transform: scale(1.05) translateY(-2px);
+    text-shadow: 0 6px 12px rgba(var(--color-primary-blue-rgb, 37, 99, 235), 0.4);
+}
+
+
+.main-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 25px; /* Use gap for spacing */
+}
+
+.main-nav li {
+    margin: 0; /* Reset margins */
+}
+
+.main-nav a,
+.main-nav button {
+    color: var(--color-text-dark);
+    text-decoration: none;
+    font-size: 1.1em; /* Slightly larger nav links */
+    font-weight: 600; /* Semi-bold */
+    padding: 10px 18px; /* More padding */
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden; /* For underline effect */
+    transition: color 0.3s ease, transform 0.3s ease;
+    border-radius: 8px; /* Slightly more rounded */
+    display: block; /* Ensure padding works */
+}
+
+.main-nav a::before,
+.main-nav button::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%; /* Start from center */
+    width: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--color-primary-blue), var(--color-secondary-purple)); /* Gradient underline */
+    border-radius: 2px;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Smooth animation */
+    transform: translateX(-50%); /* Center the underline */
+}
+
+.main-nav a:hover,
+.main-nav button:hover {
+    color: var(--color-primary-blue); /* Text color changes on hover */
+    transform: translateY(-2px);
+}
+
+.main-nav a:hover::before,
+.main-nav button:hover::before {
+    width: 100%; /* Expand underline */
+}
+
+.main-nav button {
+    background-color: var(--color-primary-blue);
+    color: var(--color-text-light); /* White text for logout button */
+    padding: 10px 20px;
+    border-radius: 9999px; /* Pill shape */
+    box-shadow: var(--shadow-md);
+    transition: all 0.3s ease-in-out;
+}
+
+.main-nav button:hover {
+    background-color: var(--color-primary-dark-blue);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+    color: var(--color-text-light); /* Keep text white on hover */
+}
+/* No underline for logout button */
+.main-nav button::before {
+    content: none;
+}
+
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+    .main-header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 15px 20px;
+    }
+
+    .logo {
+        font-size: 2.2em;
+        margin-bottom: 15px; /* Space below logo */
+    }
+
+    .main-nav ul {
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+        gap: 10px; /* Smaller gap for stacked items */
+    }
+
+    .main-nav li {
+        width: 100%;
+    }
+
+    .main-nav a,
+    .main-nav button {
+        display: block;
+        width: 100%;
+        text-align: left;
+        padding: 12px 15px; /* More padding for tap targets */
+        font-size: 1em;
+        border-radius: 6px;
+    }
+    .main-nav a:hover::before {
+        width: calc(100% - 30px); /* Adjust underline width for padding */
+        left: 15px; /* Align underline with text */
+        transform: none;
+    }
+    .main-nav button {
+        width: auto; /* Allow logout button to size to content */
+        align-self: flex-end; /* Push logout to the right if space allows */
+        padding: 10px 18px;
+        margin-top: 10px;
+    }
+}
+
+@media (max-width: 600px) {
+    .main-header {
+        padding: 10px 15px;
+        min-height: 70px;
+    }
+    .logo {
+        font-size: 2em;
+    }
+    .main-nav a,
+    .main-nav button {
+        padding: 10px 12px;
+        font-size: 0.95em;
+    }
+}

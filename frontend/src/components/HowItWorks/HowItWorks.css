@@ -1,0 +1,83 @@
+/* src/components/HowItWorks/HowItWorks.css */
+
+.how-it-works-section {
+    background: var(--gradient-hero); /* Use the hero gradient */
+    color: var(--text-light); /* White text on dark background */
+}
+
+.how-it-works-section .section-title {
+    color: var(--text-light); /* Override title color for this section */
+}
+
+.how-it-works-section .section-title::after {
+    background-color: var(--accent-color); /* Teal underline */
+}
+
+.how-it-works-section .section-subtitle {
+    color: rgba(255, 255, 255, 0.8) !important; /* Lighter white for subtitle */
+}
+
+.work-step {
+    background-color: rgba(255, 255, 255, 0.95); /* Slightly transparent white card */
+    border-radius: 15px; /* Softer corners */
+    padding: 40px; /* More padding */
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    height: 100%; /* Ensure consistent height */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Subtle transparent border */
+    backdrop-filter: blur(3px); /* Glassmorphism effect */
+}
+
+.work-step:hover {
+    transform: translateY(-10px); /* Lift higher */
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.2); /* Stronger shadow */
+    background-color: #fff; /* Fully opaque on hover */
+}
+
+.step-icon {
+    font-size: 3.5rem; /* Larger icon */
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    background: rgba(0, 123, 255, 0.1); /* Subtle background for icon */
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: inset 0 0 15px rgba(0, 123, 255, 0.1); /* Inner shadow for depth */
+}
+
+.work-step h3 {
+    color: var(--secondary-color); /* Secondary color for heading */
+    font-weight: 700;
+    font-size: 1.5rem; /* Larger heading */
+}
+
+.work-step p {
+    color: #6c757d; /* Standard text color */
+    font-size: 1.05rem;
+}
+
+
+.how-it-works-section .container::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 10%;
+    right: 10%;
+    height: 2px;
+    background-color: rgba(255, 255, 255, 0.3);
+    z-index: -1;
+    display: none; 
+}
+@media (min-width: 768px) {
+    .how-it-works-section .container::before {
+        display: block;
+    }
+}

@@ -1,0 +1,223 @@
+/* src/pages/ClientReviewDeliverablesPage.css */
+
+.client-review-container {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    color: #333;
+}
+
+.client-review-container .page-title {
+    text-align: center;
+    color: #0056b3;
+    margin-bottom: 30px;
+    font-size: 2em;
+}
+
+.client-review-container .loading-state,
+.client-review-container .error-state {
+    text-align: center;
+    padding: 50px;
+    font-size: 1.2em;
+    color: #555;
+}
+
+.client-review-container .error-state {
+    color: #dc3545;
+}
+
+.client-review-container .alert-success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.client-review-container .alert-error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Project Summary Section */
+.project-summary {
+    background-color: #f8f9fa;
+    border: 1px solid #e2e6ea;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+.project-summary h3 {
+    color: #0056b3;
+    margin-top: 0;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+.project-summary p {
+    margin-bottom: 8px;
+    font-size: 1.05em;
+}
+
+.project-summary strong {
+    color: #555;
+}
+
+/* Deliverables List Section */
+.deliverables-list-section {
+    margin-bottom: 30px;
+}
+
+.deliverables-list-section h3 {
+    color: #0056b3;
+    margin-top: 0;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+.deliverables-list {
+    list-style: none;
+    padding: 0;
+}
+
+.deliverable-item {
+    background-color: #f0f8ff;
+    border: 1px solid #d0e7ff;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.deliverable-item p {
+    margin: 0;
+}
+
+.download-button {
+    display: inline-block;
+    background-color: #28a745; /* Green for download */
+    color: white;
+    padding: 8px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    text-align: center;
+    font-size: 0.9em;
+    transition: background-color 0.3s ease;
+    align-self: flex-start; /* Align button to start of flex item */
+}
+
+.download-button:hover {
+    background-color: #218838;
+}
+
+.no-deliverables-message {
+    text-align: center;
+    color: #6c757d;
+    font-style: italic;
+    padding: 20px;
+    border: 1px dashed #ced4da;
+    border-radius: 5px;
+}
+
+/* Review Actions Section */
+.review-actions {
+    background-color: #e9f7ef;
+    border: 1px solid #d4edda;
+    border-radius: 8px;
+    padding: 20px;
+    margin-top: 30px;
+    text-align: center;
+}
+
+.review-actions h3 {
+    color: #0056b3;
+    margin-bottom: 15px;
+}
+
+.review-actions p {
+    font-size: 1.1em;
+    margin-bottom: 20px;
+}
+
+.action-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.action-button {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.action-button:hover {
+    transform: translateY(-2px);
+}
+
+.accept-button {
+    background-color: #007bff; /* Blue for accept */
+    color: white;
+}
+
+.accept-button:hover {
+    background-color: #0056b3;
+}
+
+.revise-button {
+    background-color: #ffc107; /* Yellow for revisions */
+    color: #333;
+}
+
+.revise-button:hover {
+    background-color: #e0a800;
+}
+
+.info-message {
+    text-align: center;
+    padding: 15px;
+    background-color: #e9ecef;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    color: #495057;
+    margin-top: 20px;
+}
+
+/* Status Badges (re-use from ProjectDetails.css or define here if not global) */
+.status-badge {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.85em;
+    font-weight: bold;
+    color: white;
+    margin-left: 5px;
+    display: inline-block; /* To allow padding/margin */
+}
+
+.status-open { background-color: #007bff; } /* Blue */
+.status-assigned { background-color: #ffc107; color: #333; } /* Yellow */
+.status-in-progress { background-color: #17a2b8; } /* Cyan */
+.status-submitted { background-color: #6c757d; } /* Grey */
+.status-completed { background-color: #28a745; } /* Green */
+.status-completed-pending-review { background-color: #fd7e14; } /* Orange */
+.status-awaiting-acceptance { background-color: #6f42c1; } /* Purple */
+.status-closed { background-color: #dc3545; } /* Red */
+.status-unknown { background-color: #6c757d; }

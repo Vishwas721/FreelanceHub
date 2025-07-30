@@ -1,0 +1,149 @@
+/* src/HomePage.css */
+
+/* Global Font Imports (Example: Poppins and Montserrat for modern look) */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* Universal Box Sizing for consistent layout behavior */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+:root {
+    /* Colors */
+    --primary-color: #5B42F3; /* A vibrant, modern purple */
+    --secondary-color: #3C4257; /* Dark charcoal/navy for contrast */
+    --accent-color: #2ED1B0; /* A striking teal for highlights */
+    --light-bg: #F8F9FA;
+    --dark-bg: #1A1A2E; /* Very dark background for dramatic sections */
+    --text-dark: #343a40;
+    --text-light: #f8f9fa;
+    --border-color: #e0e0e0;
+    --gradient-hero: linear-gradient(135deg, #6A11CB 0%, #2575FC 100%); /* Example gradient */
+    --gradient-cta: linear-gradient(45deg, #1A2980 0%, #26D0CE 100%);
+
+    /* Fonts */
+    --font-heading: 'Montserrat', sans-serif;
+    --font-body: 'Poppins', sans-serif;
+
+    /* Spacing */
+    --section-padding-y: 6rem;
+    --component-padding-y: 4rem;
+}
+
+body {
+    font-family: var(--font-body);
+    color: var(--text-dark);
+    line-height: 1.6;
+    overflow-x: hidden; /* Prevent horizontal scroll from animations */
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    color: var(--text-dark);
+    font-weight: 700;
+}
+
+.section-title {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    position: relative;
+    padding-bottom: 10px;
+    display: inline-block; /* Allows pseudo-element underline */
+    color: var(--secondary-color);
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background-color: var(--primary-color);
+    border-radius: 2px;
+}
+
+.section-subtitle {
+    font-size: 1.25rem;
+    color: #6c757d;
+    margin-top: 0.5rem;
+    font-weight: 400;
+}
+
+/* Custom Bootstrap Overrides for Buttons */
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    padding: 0.8rem 2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 50px; /* Pill shape */
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 5px 15px rgba(0, 123, 255, 0.2);
+}
+
+.btn-primary:hover {
+    background-color: var(--secondary-color); /* Darker on hover */
+    border-color: var(--secondary-color);
+    transform: translateY(-2px); /* Slight lift */
+    box-shadow: 0 8px 20px rgba(0, 123, 255, 0.3);
+}
+
+.btn-outline-primary {
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+    background-color: transparent;
+    padding: 0.8rem 2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 50px;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn-outline-primary:hover {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 123, 255, 0.2);
+}
+
+/* Global Section Padding */
+section {
+    padding-top: var(--section-padding-y);
+    padding-bottom: var(--section-padding-y);
+}
+
+/* Add some subtle scroll animation to elements if desired, example: */
+/*
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.animate-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+*/
+
+/* General styling for cards/panels */
+.card-hover-effect {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-hover-effect:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Utility classes for backgrounds */
+.bg-gradient-primary {
+    background: var(--gradient-hero) !important;
+}
+
+.bg-gradient-secondary {
+    background: var(--secondary-color) !important;
+}

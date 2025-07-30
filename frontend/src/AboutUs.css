@@ -1,0 +1,90 @@
+.about-us-container {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+}
+
+.about-us-header {
+    background-color: #ffffff;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+    border-bottom: 3px solid #e74c3c;
+}
+
+.about-us-header h1 {
+    margin: 0;
+    font-size: 2.5em;
+}
+
+.about-us-content {
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+}
+
+.about-us-section {
+    margin-bottom: 20px;
+}
+
+.about-us-section h2 {
+    color: #e74c3c;
+    border-bottom: 2px solid #e74c3c;
+    padding-bottom: 5px;
+}
+
+.about-us-section p {
+    margin-bottom: 10px;
+}
+
+.team-members {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.team-member {
+    width: 200px;
+    margin: 15px;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.team-member img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.team-member h3 {
+    margin: 0;
+    font-size: 1.2em;
+    color: #333;
+}
+
+.team-member p {
+    font-size: 0.9em;
+    color: #777;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .about-us-content {
+        padding: 20px;
+    }
+
+    .team-member {
+        width: 150px;
+        margin: 10px;
+    }
+}

@@ -1,0 +1,502 @@
+/* src/pages/MyProjectsPage.css - Ultra-Modern Upgrade */
+
+/* Define a set of consistent colors for light mode */
+:root {
+    --color-page-background: #F7FAFC;
+    --color-container-background: #FFFFFF;
+    --color-text-primary: #2D3748;
+    --color-text-secondary: #718096;
+    --color-accent-primary: #4299E1; /* Blue */
+    --color-accent-secondary: #48BB78; /* Green */
+    --color-card-border: #EDF2F7;
+    --color-card-shadow-light: rgba(0, 0, 0, 0.06);
+    --color-card-shadow-medium: rgba(0, 0, 0, 0.04);
+    --color-card-shadow-hover-light: rgba(0, 0, 0, 0.1);
+    --color-card-shadow-hover-medium: rgba(0, 0, 0, 0.08);
+    --color-button-primary: #4299E1;
+    --color-button-primary-hover: #3182CE;
+    --color-button-secondary: #EDF2F7;
+    --color-button-secondary-hover: #D1DDEB;
+    --color-button-delete: #E53E3E;
+    --color-button-delete-hover: #C53030;
+    /* UPDATED STATUS COLORS for better visibility and distinction */
+    --color-status-open: #81E6D9; /* Light Teal - good for 'new' */
+    --color-status-assigned: #90CDF4; /* Light Blue - good for 'taken' */
+    --color-status-in-progress: #F1C40F; /* Stronger Yellow - for 'active work' */
+    --color-status-completed: #2ECC71; /* Emerald Green - for clear completion */
+    --color-status-completed-pending-review: #9B59B6; /* Amethyst Purple - for 'pending review' */
+    --color-status-cancelled: #E74C3C; /* Stronger Red - for 'cancelled' */
+    --color-loading-background: rgba(255, 255, 255, 0.8);
+    --color-loading-text: #4A5568;
+    --color-error-background: rgba(255, 235, 235, 0.8);
+    --color-error-text: #E53E3E;
+    --color-empty-background: #EDF2F7;
+    --color-empty-text: #718096;
+    --color-spinner-border: #4299E1;
+    --color-spinner-border-top: #3182CE;
+}
+
+/* Base page container */
+.my-projects-container {
+    padding: 60px 30px; /* Generous padding */
+    max-width: 1400px; /* Wider container for more content */
+    margin: 0 auto;
+    background-color: var(--color-page-background); /* Use CSS variable */
+    min-height: calc(100vh - 120px); /* Adjust for fixed header/footer height */
+    font-family: 'Inter', sans-serif; /* Modern, readable font */
+    color: var(--color-text-primary); /* Primary text color */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center content horizontally */
+}
+
+/* Page Title Styling */
+.page-title {
+    font-size: 3em; /* Larger, more prominent title */
+    color: var(--color-text-primary); /* Use primary text color for main title text */
+    text-align: center;
+    margin-bottom: 50px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    position: relative;
+    padding-bottom: 15px;
+    /* Removed border-bottom here to use ::after for gradient */
+}
+
+/* Modern accent line below the heading (now a gradient) */
+.page-title::after {
+    content: '';
+    position: absolute;
+    left: 50%; /* Center the pseudo-element */
+    transform: translateX(-50%); /* Adjust for centering */
+    bottom: 0;
+    width: 150px; /* Length of the accent line */
+    height: 4px; /* Thickness of the accent line */
+    background: linear-gradient(90deg, var(--color-accent-primary) 0%, var(--color-accent-secondary) 100%); /* Vibrant blue-green gradient */
+    border-radius: 2px; /* Rounded ends for the line */
+}
+
+
+/* Loading, Error, and Empty States */
+.loading-state,
+.error-state,
+.empty-state {
+    background-color: var(--color-loading-background);
+    color: var(--color-loading-text);
+    padding: 40px;
+    border-radius: 15px;
+    text-align: center;
+    font-size: 1.2em;
+    margin-top: 50px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Soft shadow */
+    width: 100%; /* Take full width within container */
+    max-width: 600px; /* Limit width */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.loading-state .spinner {
+    border: 8px solid var(--color-spinner-border); /* Light blue spinner */
+    border-top: 8px solid var(--color-spinner-border-top); /* Darker blue top */
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 1.2s linear infinite;
+    margin-bottom: 20px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.error-state {
+    background-color: var(--color-error-background);
+    color: var(--color-error-text);
+    border: 1px solid var(--color-error-text);
+}
+
+.empty-state {
+    background-color: var(--color-empty-background);
+    color: var(--color-empty-text);
+    border: 2px dashed var(--color-text-secondary); /* Dashed border for empty state */
+    padding: 80px 40px;
+    gap: 30px; /* Space between text and button */
+}
+
+.loading-state p,
+.error-state p,
+.empty-state p {
+    margin-bottom: 30px;
+    font-weight: 600;
+}
+
+/* Call to Action Button (e.g., Post Your First Project) */
+.call-to-action-button {
+    background-color: var(--color-button-primary);
+    color: white;
+    border: none;
+    padding: 16px 35px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1.15em;
+    font-weight: 700;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 15px rgba(66, 153, 225, 0.3); /* Accent color shadow */
+}
+
+.call-to-action-button:hover {
+    background-color: var(--color-button-primary-hover);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(66, 153, 225, 0.4);
+}
+
+/* Projects List Grid */
+.projects-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); /* Wider cards */
+    gap: 40px; /* More space between cards */
+    width: 100%;
+    margin-top: 30px;
+}
+
+/* Individual Project Card - Elevated Design */
+.project-card {
+    background-color: var(--color-card-background);
+    border-radius: 15px;
+    box-shadow:
+        0 12px 35px var(--color-card-shadow-light), /* Primary soft shadow */
+        0 20px 60px var(--color-card-shadow-medium); /* Secondary, wider shadow */
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    border: 1px solid var(--color-card-border);
+    overflow: hidden;
+    position: relative;
+}
+
+.project-card:hover {
+    transform: translateY(-8px);
+    box-shadow:
+        0 15px 40px var(--color-card-shadow-hover-light),
+        0 25px 70px var(--color-card-shadow-hover-medium);
+}
+
+/* Decorative Top Border for cards */
+.project-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 6px;
+    background: linear-gradient(90deg, var(--color-accent-primary) 0%, var(--color-accent-secondary) 100%);
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+.project-card-title {
+    font-size: 2em;
+    color: var(--color-text-primary);
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.project-card-description {
+    font-size: 1.1em;
+    color: var(--color-text-secondary);
+    line-height: 1.7;
+    margin-bottom: 20px;
+    flex-grow: 1; /* Allows content to push actions to bottom */
+}
+
+.project-card-details {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px; /* Space between detail items */
+    margin-bottom: 25px;
+    padding-top: 20px;
+    border-top: 2px dashed var(--color-card-border); /* Dashed separator */
+}
+
+.detail-item {
+    font-size: 0.95em;
+    color: var(--color-text-secondary);
+    background-color: var(--color-empty-background); /* Use a light background for tags */
+    padding: 8px 15px;
+    border-radius: 8px;
+    font-weight: 600;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08); /* Subtle shadow for tags */
+}
+
+/* Project Status Badges - Distinct Colors */
+.status-badge {
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: white; /* White text for all status badges */
+    padding: 10px 18px;
+    border-radius: 10px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+}
+.status-badge.status-open { background-color: var(--color-status-open); }
+.status-badge.status-assigned { background-color: var(--color-status-assigned); }
+.status-badge.status-in-progress { background-color: var(--color-status-in-progress); }
+.status-badge.status-completed { background-color: var(--color-status-completed); }
+.status-badge.status-completed-pending-review { background-color: var(--color-status-completed-pending-review); } /* NEW STATUS */
+.status-badge.status-cancelled { background-color: var(--color-status-cancelled); }
+.status-badge.status-unknown { background-color: #6C757D; } /* Default grey for unknown */
+
+/* Action Buttons */
+.project-card-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px; /* Space between buttons */
+    margin-top: auto; /* Push buttons to the bottom of the card */
+    padding-top: 25px;
+    border-top: 2px dashed var(--color-card-border); /* Dashed separator */
+}
+
+.action-button {
+    padding: 14px 25px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: 600;
+    transition: all 0.3s ease-in-out;
+    flex-grow: 1; /* Make buttons fill available space */
+    text-align: center;
+    border: none;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.primary-action-button {
+    background-color: var(--color-button-primary);
+    color: white;
+}
+
+.primary-action-button:hover {
+    background-color: var(--color-button-primary-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(66, 153, 225, 0.3); /* Accent color shadow */
+}
+
+.secondary-action-button {
+    background-color: var(--color-button-secondary);
+    color: var(--color-text-primary); /* Text color from primary */
+    border: 1px solid var(--color-card-border);
+}
+
+.secondary-action-button:hover {
+    background-color: var(--color-button-secondary-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+.delete-button {
+    background-color: var(--color-button-delete);
+    color: white;
+}
+
+.delete-button:hover {
+    background-color: var(--color-button-delete-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(229, 62, 62, 0.3); /* Delete color shadow */
+}
+
+.review-deliverables-button {
+    background-color: var(--color-accent-secondary); /* Green accent for review */
+    color: white;
+}
+
+.review-deliverables-button:hover {
+    background-color: #38A169; /* Darker green */
+    box-shadow: 0 6px 15px rgba(72, 187, 120, 0.3);
+}
+
+/* Delete Success Message */
+.delete-success-message {
+    background-color: #d1e7dd; /* Light green */
+    color: #0f5132; /* Dark green text */
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    text-align: center;
+    border: 1px solid #badbcc;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* Custom Confirmation Modal Styling */
+.confirm-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Dark semi-transparent overlay */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Ensure it's on top */
+    backdrop-filter: blur(5px); /* Frosted glass effect */
+}
+
+.confirm-modal-content {
+    background-color: var(--color-container-background);
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2); /* Stronger shadow for modal */
+    text-align: center;
+    max-width: 450px;
+    width: 90%;
+    transform: scale(0.95); /* Slight scale-in animation base */
+    animation: modalPopIn 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
+}
+
+@keyframes modalPopIn {
+    from { opacity: 0; transform: scale(0.8); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.confirm-modal-content h3 {
+    font-size: 2em;
+    color: var(--color-text-primary);
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.confirm-modal-content p {
+    font-size: 1.1em;
+    color: var(--color-text-secondary);
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.modal-actions .action-button {
+    flex-grow: 0; /* Don't make buttons fill full width in modal */
+    min-width: 120px; /* Ensure minimum button width */
+}
+
+
+/* Responsive Adjustments - Enhanced */
+@media (max-width: 1200px) {
+    .my-projects-container {
+        padding: 50px 25px;
+    }
+    .projects-list {
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 30px;
+    }
+    .project-card {
+        padding: 25px;
+    }
+    .project-card-title {
+        font-size: 1.8em;
+    }
+}
+
+@media (max-width: 992px) {
+    .page-title {
+        font-size: 2.5em;
+        margin-bottom: 40px;
+    }
+    .projects-list {
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 25px;
+    }
+    .project-card-actions {
+        gap: 10px;
+    }
+    .action-button {
+        font-size: 0.9em;
+        padding: 12px 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .my-projects-container {
+        padding: 40px 20px;
+    }
+    .page-title {
+        font-size: 2.2em;
+        margin-bottom: 35px;
+    }
+    .projects-list {
+        grid-template-columns: 1fr; /* Stack on smaller screens */
+    }
+    .project-card {
+        padding: 20px;
+    }
+    .project-card-title {
+        font-size: 1.6em;
+    }
+    .project-card-details {
+        gap: 12px;
+        margin-bottom: 18px;
+    }
+    .detail-item {
+        font-size: 0.9em;
+        padding: 6px 12px;
+    }
+    .project-card-actions {
+        flex-direction: column; /* Stack buttons on very small screens */
+    }
+    .action-button {
+        width: 100%;
+        margin-bottom: 8px;
+    }
+    .confirm-modal-content {
+        padding: 30px;
+    }
+    .confirm-modal-content h3 {
+        font-size: 1.8em;
+    }
+    .confirm-modal-content p {
+        font-size: 1em;
+    }
+}
+
+@media (max-width: 480px) {
+    .my-projects-container {
+        padding: 30px 15px;
+    }
+    .page-title {
+        font-size: 2em;
+        margin-bottom: 30px;
+    }
+    .empty-state {
+        padding: 60px 30px;
+    }
+    .call-to-action-button {
+        font-size: 1em;
+        padding: 14px 25px;
+    }
+    .project-card-title {
+        font-size: 1.4em;
+    }
+    .project-card-description {
+        font-size: 0.95em;
+    }
+    .detail-item {
+        font-size: 0.85em;
+    }
+    .action-button {
+        font-size: 0.85em;
+        padding: 10px 15px;
+    }
+    .confirm-modal-content {
+        padding: 25px;
+    }
+    .confirm-modal-content h3 {
+        font-size: 1.6em;
+    }
+}

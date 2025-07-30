@@ -1,0 +1,123 @@
+/* Base CTA section */
+.cta-section {
+ 
+    color: var(--text-light, #ffffff);
+    padding: 7rem 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 1;
+}
+
+/* Subtle animated background elements */
+.cta-section::before,
+.cta-section::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.05);
+    animation: pulse 4s infinite ease-in-out alternate;
+    z-index: 0;
+}
+
+.cta-section::before {
+    width: 200px;
+    height: 200px;
+    top: -50px;
+    left: -50px;
+    animation-delay: 0s;
+}
+
+.cta-section::after {
+    width: 150px;
+    height: 150px;
+    bottom: -50px;
+    right: -50px;
+    animation-delay: 1.5s;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); opacity: 0.05; }
+    100% { transform: scale(1.1); opacity: 0.1; }
+}
+
+/* Content container */
+.cta-content {
+    max-width: 700px;
+    z-index: 2;
+}
+
+/* Title and description */
+.cta-title {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+    color:black;
+}
+
+.cta-description {
+    font-size: 1.4rem;
+    margin-bottom: 3rem;
+    opacity: 0.95;
+    font-weight: 300;
+    color: rgb(0, 0, 0);
+}
+
+/* Call-to-action button */
+.cta-btn {
+    padding: 1rem 3rem;
+    font-size: 1.3rem;
+    border-radius: 50px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease-in-out;
+    z-index: 1;
+}
+
+.cta-btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    background-color: var(--accent-color, #00bfa6);
+    border-color: var(--accent-color, #00bfa6);
+}
+
+/* Fiverr style image logo */
+.cta-logo {
+    width: 120px;
+    height: auto;
+    margin-bottom: 2rem;
+}
+
+/* Fiverr style video */
+.cta-video {
+    width: 100%;
+    max-width: 720px;
+    height: auto;
+    margin-top: 3rem;
+    border-radius: 16px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .cta-title {
+        font-size: 2.8rem;
+    }
+
+    .cta-description {
+        font-size: 1.2rem;
+    }
+
+    .cta-btn {
+        padding: 0.8rem 2.5rem;
+        font-size: 1.1rem;
+    }
+
+    .cta-video {
+        width: 90%;
+        height: auto;
+    }
+}
